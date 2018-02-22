@@ -10,6 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "localhost:8080",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
