@@ -1,3 +1,25 @@
+-- COMMANDS FOR HOW TO STARTUP:
+-- 
+-- Go to Terminal:
+-- mysql -u root -p
+-- 
+-- Now, inside MySQL interactive prompt:
+-- SHOW DATABASES;
+-- CREATE DATABASE dabase_name;
+-- USE database_name;
+-- SOURCE path/to/file.sql;
+-- 
+-- Now, verify load:
+-- SHOW DATABASES;
+-- SHOW TABLES;
+-- 
+-- Verify the schema of each table:
+-- DESCRIBE table_name;
+-- 
+-- Exit MySQL interactive prompt with control-z
+-- 
+
+
 -- ---
 -- Globals
 -- ---
@@ -13,11 +35,11 @@
 DROP TABLE IF EXISTS `USERS`;
 
 CREATE TABLE `USERS` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(25) NOT NULL,
-  `Gender` VARCHAR(10) NOT NULL DEFAULT 'NULL',
+  `Gender` VARCHAR(10) NOT NULL,
   `Profile_pic` VARCHAR(300) NOT NULL,
-  `Bio` VARCHAR(280) NULL DEFAULT NULL,
+  `Bio` VARCHAR(280) NULL,
   `Username` VARCHAR(20) NOT NULL,
   `Password` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
@@ -31,10 +53,10 @@ CREATE TABLE `USERS` (
 DROP TABLE IF EXISTS `Submissions`;
 
 CREATE TABLE `Submissions` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
   `Image_url` VARCHAR(200) NOT NULL,
-  `Caption` VARCHAR(280) NOT NULL DEFAULT 'Im Lazy',
-  `Like_count` INTEGER(9000) NOT NULL DEFAULT 0,
+  `Caption` VARCHAR(280) DEFAULT 'Im Lazy',
+  `Like_count` INTEGER(4) DEFAULT 0,
   `User_id` INTEGER NOT NULL,
   PRIMARY KEY (`id`)
 );
@@ -47,11 +69,11 @@ CREATE TABLE `Submissions` (
 DROP TABLE IF EXISTS `Comments`;
 
 CREATE TABLE `Comments` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
   `Submission` INTEGER NOT NULL,
-  `Commenter` INTEGER(1000) NOT NULL,
-  `Content` VARCHAR(500) NOT NULL DEFAULT 'Cool pic!',
-  `Parent` INTEGER NULL DEFAULT NULL,
+  `Commenter` INTEGER(3) NOT NULL,
+  `Content` VARCHAR(500) DEFAULT 'Cool pic!',
+  `Parent` INTEGER NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -63,9 +85,9 @@ CREATE TABLE `Comments` (
 DROP TABLE IF EXISTS `Followers_Following`;
 
 CREATE TABLE `Followers_Following` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `Follower` INTEGER(1000) NOT NULL,
-  `Followee` INTEGER(1000) NOT NULL,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `Follower` INTEGER(3) NOT NULL,
+  `Followee` INTEGER(3) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -77,9 +99,10 @@ CREATE TABLE `Followers_Following` (
 DROP TABLE IF EXISTS `Likes`;
 
 CREATE TABLE `Likes` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `Submission` INTEGER(1000) NOT NULL,
-  `User_id` INTEGER(1000) NOT NULL
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `Submission` INTEGER(3) NOT NULL,
+  `User_id` INTEGER(3) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 -- ---
