@@ -1,9 +1,13 @@
 const model = require('./models/model');
+const getAllSubs = require('./models/getAllSubs')
 
 module.exports = {
 
     getAllSubs: (req, res) => {
-      res.send('getAllSubs Success');
+      getAllSubs().then((submissions) =>{
+        res.send( submissions);
+      })
+      
     },
 
     getFollowers: (req, res) => {
