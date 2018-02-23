@@ -1,4 +1,5 @@
 const model = require('./models/model');
+const johnny = require('./models/johnny');
 
 const comment = require('./models/postComment');
 
@@ -29,7 +30,8 @@ module.exports = {
     },
 
     postInfo: (req, res) => {
-      res.send('post Info Success');
+      johnny.createUser(req);
+      res.send('User created!');
     },
 
     submit: (req, res) => {
