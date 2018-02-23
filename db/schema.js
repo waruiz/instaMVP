@@ -142,8 +142,12 @@ const Followers = connection.define('followers', {
       key: 'id',
       }
   },
-  
+  pending: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  }
 });
+
 
 connection.sync().then(function(){
   Submissions.create({
@@ -156,6 +160,7 @@ connection.sync().then(function(){
     user_id: 1
   })
 });
+
 
 module.exports = {
   Users,
