@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db-start": "node ./db/index.js mysql -u root -p",
-    "start": "nodemon index",
+
+    "start": "nodemon server/index",
     "dev-react": "webpack -d --watch"
   },
   "keywords": [],
