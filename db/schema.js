@@ -145,17 +145,7 @@ const Followers = connection.define('followers', {
   
 });
 
-connection.sync().then(function(){
-  Users.create({
-
-    name: 'johnny',
-    username: 'johnny',
-    gender: 'M',
-    profile_pic: 'google.com',
-    bio: 'cool',
-    password: '123'
-  })
-});
+connection.sync();
 
 module.exports = {
   Users,
