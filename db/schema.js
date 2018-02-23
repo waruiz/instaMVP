@@ -146,14 +146,14 @@ const Followers = connection.define('followers', {
 });
 
 connection.sync().then(function(){
-  Users.create({
+  Submissions.create({
 
-    name: 'johnny',
-    username: 'johnny',
-    gender: 'M',
-    profile_pic: 'google.com',
-    bio: 'cool',
-    password: '123'
+ 
+    image_url: 'www.test.com',
+    caption: 'this is a test',
+    name: 'this is unneeded',
+    like_count: 100,
+    user_id: 1
   })
 });
 
