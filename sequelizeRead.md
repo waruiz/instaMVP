@@ -25,16 +25,22 @@ GIT WORKFLOW
 
 -Work on feature
 
+-commit your changes
+
 -Git Push Origin 'branch name'
 
 -Pull request on github
 
 -Get group to approve the merge, then merge
 
+-to do above step, run git checkout master to switch to master branch
+
 -Then alert Slack to "git pull origin master'
 
 -Run NPM install
 
--Check 'git branch' and if you have a star next to it, you are on the branch
+-Switch to your branch using git checkout 'your branch'
 
 -git rebase master on your branch
+
+-continue working on your branch
