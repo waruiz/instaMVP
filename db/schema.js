@@ -157,4 +157,10 @@ connection.sync().then(function(){
   })
 });
 
-module.exports = connection;
+module.exports = {
+  Users,
+  Submissions,
+  Comments,
+  Likes,
+  Followers
+};
