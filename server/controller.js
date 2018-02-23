@@ -31,7 +31,8 @@ module.exports = {
     },
 
     submit: (req, res) => {
-      res.send('submit Success');
+      model.postSubmit(req, res);
+      res.status(201).end();
     },
 
     comment: (req, res) => {
