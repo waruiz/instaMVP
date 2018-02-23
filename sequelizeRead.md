@@ -37,10 +37,11 @@ GIT WORKFLOW
 
 -Then alert Slack to "git pull origin master'
 
--Run NPM install
 
 -Switch to your branch using git checkout 'your branch'
 
 -git rebase master on your branch
+
+-run npm install 
 
 -continue working on your branch
