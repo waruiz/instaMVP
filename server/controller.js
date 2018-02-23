@@ -1,5 +1,7 @@
 const model = require('./models/model');
 
+const comment = require('./models/postComment');
+
 module.exports = {
 
     getAllSubs: (req, res) => {
@@ -35,7 +37,8 @@ module.exports = {
     },
 
     comment: (req, res) => {
-      res.send('comment Success');
+        comment.postComment(req, res).then((data)=>
+        res.send(data));
     },
 
     requestFollower: (req, res) => {
