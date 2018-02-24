@@ -9,6 +9,10 @@ var getLikes = function(req){
   db.Likes.find(req.params)
 }
 
+var getInfo = function(req){
+  db.Users.find(req.params);
+}
+
 module.exports = {
 createUser,
 getLikes
