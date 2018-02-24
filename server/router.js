@@ -9,14 +9,15 @@ router.get('/following/:user', controller.getFollowing);
 router.get('/likes/:sub', controller.getSubLikes);
 router.get('/comments/:sub', controller.getSubComments);
 router.get('/info/:user', controller.getUserInfo);
+router.get('/pending/:user', controller.getPendingFollowers);
 
 // router.post('/login', controller.login);
 router.post('/info', controller.postInfo);
 router.post('/submit', controller.submit);
 router.post('/comment', controller.comment);
 router.post('/requestfollower', controller.requestFollower);
-router.post('/addfollower', controller.addFollower);
 
+router.put('/addfollower', controller.addFollower);
 router.put('/info', controller.updateInfo);
 router.put('/submit', controller.updateSubmission);
 router.put('/comment', controller.updateComment);
