@@ -67,7 +67,7 @@ getFollowing: (req, res) => {
   },
 
   updateComment: (req, res) => {
-    comment.updateComment(req, res).then((comment)=>{
+    comment.updateComment(req, res).then((comment) => {
       console.log('comment updated')
       res.send(comment);
     })

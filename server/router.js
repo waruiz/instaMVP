@@ -21,7 +21,11 @@ router.put('/submit', controller.updateSubmission);
 router.put('/comment', controller.updateComment);
 
 router.delete('/submit/:submission', controller.deleteSubmission);
+<<<<<<< HEAD
 router.delete('/comment', controller.deleteComment);
+=======
+router.delete('/comment/', controller.deleteComment);
+>>>>>>> COMMENT BACKEND IMPLEMENTED AND TESTING
 router.delete('/follower/:user', controller.deleteFollower);
 router.delete('/following/:user', controller.deleteUser);
 

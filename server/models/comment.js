@@ -10,14 +10,20 @@ module.exports = {
 
   getSubComments: (req, res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> COMMENT BACKEND IMPLEMENTED AND TESTING
     let comments = db.Comments.findAll({
       where: {
         submission_id: req.params.sub
       },
     });
+<<<<<<< HEAD
 =======
     let comments = db.Comments.findAll({submission_id: req.body});
 >>>>>>> debugged comments, tidied directories
+=======
+>>>>>>> COMMENT BACKEND IMPLEMENTED AND TESTING
     return comments;
   },
 
