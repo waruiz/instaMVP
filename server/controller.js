@@ -1,20 +1,7 @@
 const model = require("./models/model");
 const getAllSubs = require("./models/getAllSubs");
-<<<<<<< HEAD
 const johnny = require("./models/johnny");
-<<<<<<< HEAD
 const comment = require("./models/comment");
-=======
-=======
-const model = require('./models/model');
-<<<<<<< HEAD
-const getAllSubs = require('./models/getAllSubs')
->>>>>>> Fix MySQL load issues
->>>>>>> Fix MySQL load issues
-
-=======
-=======
->>>>>>> Fix
 
 // const getAllSubs = require('./models/getAllSubs')
 
@@ -60,6 +47,13 @@ getFollowing: (req, res) => {
     res.send('getUserInfo Success');
   },
 
+  getPendingFollowers: (req, res) => {
+    will.getPendingFollowers(req, res)
+      .then(result => {
+        res.send(result);
+      })
+  },
+
   postInfo: (req, res) => {
     res.send('post Info Success');
   },
@@ -73,11 +67,17 @@ getFollowing: (req, res) => {
   },
 
   requestFollower: (req, res) => {
-    res.send('requestFollower Success');
+    will.requestFollower(req, res)
+      .then(data => {
+        res.end();
+      });
   },
 
   addFollower: (req, res) => {
-    res.send('addFollower Success');
+    will.addFollower(req, res)
+      .then(data => {
+        res.end();
+      })
   },
 
   updateInfo: (req, res) => {
