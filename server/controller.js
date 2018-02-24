@@ -12,7 +12,6 @@ module.exports = {
     },
 
     getFollowers: (req, res) => {
-      console.log('reaches controller')
       johnny.getFollowers(req).then((followers) => {
         console.log('FOLLOWERS: ', followers)
         res.send(followers);
@@ -20,7 +19,10 @@ module.exports = {
     },
 
     getFollowing: (req, res) => {
-      res.send('getFollowing Success');
+      johnny.getFollowing(req).then((following) => {
+        console.log('following: ', following)
+        res.send(following);
+      })
     },
 
     getSubLikes: (req, res) => {

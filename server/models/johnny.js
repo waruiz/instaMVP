@@ -49,12 +49,49 @@ var getFollowers = function(req){
       })
     })
   })
+}
 
+var getFollowing = function(req){
+  return db.Users.findAll({
+    where: {
+      username: req.params.user
+    }
+  })
+  .then((result) => {
+    console.log('RESULTS FROM FIRST THEN: ', result[0].dataValues.id)
+    return db.Followers.findAll({
+      where: {
+        follower_id: result[0].dataValues.id
+      }
+    })
+    .then((results) => {
+      var list = [];
+      results.forEach((element) => {
+        list.push(element.dataValues.id)
+      })
+      return db.Users.findAll({
+        where: {
+          id: {
+            [Op.or] : list
+          }
+        }
+      })
+      .then(function(results){
+        var list = [];
+        results.forEach(function(element){
+          list.push(element.dataValues);
+        })
+        console.log('FINAL RESULT: ', list)
+        return list;
+      })
+    })
+  })
 }
 
 module.exports = {
 createUser,
 getLikes,
-getFollowers
+getFollowers,
+getFollowing
 }
 
