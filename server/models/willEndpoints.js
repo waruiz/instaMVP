@@ -12,4 +12,13 @@ const addFollower = (req, res) => {
   db.Followers.create(req.body);
 };
 
-module.exports = postSubmit;
+const login = (req, res) => {
+  // Implement with Firebase
+};
+
+module.exports = {
+  postSubmit,
+  requestFollower,
+  addFollower,
+  login
+};
