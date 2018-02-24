@@ -21,7 +21,9 @@ router.put('/submit', controller.updateSubmission);
 router.put('/comment', controller.updateComment);
 
 router.delete('/submit/:submission', controller.deleteSubmission);
-router.delete('/comment/:comment', controller.deleteComment);
+
+router.delete('/comment', controller.deleteComment);
+
 router.delete('/follower/:user', controller.deleteFollower);
 router.delete('/following/:user', controller.deleteUser);
 
