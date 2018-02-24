@@ -1,13 +1,7 @@
 const Sequelize = require('sequelize');
 const connection = new Sequelize('insta', 'root', '', {
   host: 'localhost',
-  dialect: 'mysql',
-
-  pool: {
-    max: 20,
-    min: 0
-
-  }
+  dialect: 'mysql'
 });
 
 const Users = connection.define('users', {
@@ -153,5 +147,5 @@ module.exports = {
   Submissions,
   Comments,
   Likes,
-  Followers
+  Followers,
 };
