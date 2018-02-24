@@ -52,10 +52,6 @@ const Submissions = connection.define('submissions', {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   like_count: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
@@ -128,7 +124,7 @@ const Followers = connection.define('followers', {
     autoIncrement: true,
     primaryKey: true,
   },
-  user_id: {
+  host_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
     references: { model: Users,
@@ -149,17 +145,7 @@ const Followers = connection.define('followers', {
 });
 
 
-connection.sync().then(function(){
-  Submissions.create({
-
- 
-    image_url: 'www.test.com',
-    caption: 'this is a test',
-    name: 'this is unneeded',
-    like_count: 100,
-    user_id: 1
-  })
-});
+connection.sync()
 
 
 module.exports = {

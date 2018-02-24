@@ -1,0 +1,27 @@
+[
+  {
+    "submission_id": 1, 
+    "user_id": 3,
+    "content": "comment1"
+  },
+  {
+    "submission_id": 2, 
+    "user_id": 1,
+    "content": "comment2"
+  },
+  {
+    "submission_id": 3, 
+    "user_id": 4,
+    "content": "comment3"
+  },
+  {
+    "submission_id": 4, 
+    "user_id": 2,
+    "content": "comment4"
+  },
+  {
+    "submission_id": 1, 
+    "user_id": 2,
+    "content": "comment5"
+  }
+]
