@@ -33,7 +33,9 @@ getFollowing: (req, res) => {
 },
 
   getSubLikes: (req, res) => {
-    res.send('getSubsLikes Success');
+    johnny.getLikes(req).then(function(likes){
+      res.send(likes)
+    })
   },
 
   getSubComments: (req, res) => {
@@ -44,7 +46,10 @@ getFollowing: (req, res) => {
   },
 
   getUserInfo: (req, res) => {
-    res.send('getUserInfo Success');
+    johnny.getUserInfo(req).then(function(info){
+      console.log(info);
+      res.send(info)
+    })
   },
 
   getPendingFollowers: (req, res) => {
@@ -109,10 +114,19 @@ getFollowing: (req, res) => {
   },
 
   deleteFollower: (req, res) => {
-    res.send('delete Follower Success');
+    johnny.deleteFollower(req).then(function(follower){
+      res.send('Deleted Follower')
+    })
+  },
+
+  deleteFollowing: (req, res) => {
+    johnny.deleteFollowing(req).then(function(follower){
+      res.send('Unfollowed')
+    })
   },
 
   deleteUser: (req, res) => {
+    johnny.deleteFollowing(req).then(function(){})
     res.send('delete User Success');
   }
 
