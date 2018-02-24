@@ -1,17 +1,11 @@
 const model = require('./models/model');
-
 const getAllSubs = require('./models/getAllSubs')
-
-const johnny = require('./models/johnny');
-
-const comment = require('./models/postComment');
-
 
 module.exports = {
 
     getAllSubs: (req, res) => {
       getAllSubs().then((submissions) =>{
-        res.send( submissions);
+        res.send( submisions);
       })
       
     },
@@ -37,18 +31,15 @@ module.exports = {
     },
 
     postInfo: (req, res) => {
-      johnny.createUser(req);
-      res.send('User created!');
+      res.send('post Info Success');
     },
 
     submit: (req, res) => {
-      model.postSubmit(req, res);
-      res.status(201).end();
+      res.send('submit Success');
     },
 
     comment: (req, res) => {
-        comment.postComment(req, res).then((data)=>
-        res.send(data));
+      res.send('comment Success');
     },
 
     requestFollower: (req, res) => {

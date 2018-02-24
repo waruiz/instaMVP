@@ -148,7 +148,19 @@ const Followers = connection.define('followers', {
   }
 });
 
-connection.sync();
+
+connection.sync().then(function(){
+  Submissions.create({
+
+ 
+    image_url: 'www.test.com',
+    caption: 'this is a test',
+    name: 'this is unneeded',
+    like_count: 100,
+    user_id: 1
+  })
+});
+
 
 module.exports = {
   Users,
