@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, '../react-client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(router);
 

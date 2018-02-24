@@ -1,7 +1,12 @@
 const Sequelize = require('sequelize');
 const connection = new Sequelize('insta', 'root', '', {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
+  pool: {
+    max: 20,
+    min: 0
+
+  }
 });
 
 const Users = connection.define('users', {
@@ -57,7 +62,7 @@ const Submissions = connection.define('submissions', {
     key: 'id',
     }
   }
-
+  
 });
 
 const Comments = connection.define('comments', {
@@ -85,7 +90,7 @@ const Comments = connection.define('comments', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-
+  
 });
 
 const Likes = connection.define('likes', {
@@ -109,7 +114,7 @@ const Likes = connection.define('likes', {
       key: 'id',
       }
   },
-
+  
 });
 const Followers = connection.define('followers', {
   id: {
@@ -139,7 +144,7 @@ const Followers = connection.define('followers', {
 });
 
 
-connection.sync()
+connection.sync();
 
 
 module.exports = {
@@ -147,5 +152,5 @@ module.exports = {
   Submissions,
   Comments,
   Likes,
-  Followers,
+  Followers
 };
