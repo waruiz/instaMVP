@@ -28,7 +28,8 @@ getFollowing: (req, res) => {
   },
 
   getSubComments: (req, res) => {
-    comment.getSubComments(req,res).then((comments) => {
+    comment.getSubComments(req, res).then((comments) => {
+      console.log("here be the submissions comments")
       res.send(comments);
     });
   },
@@ -46,10 +47,7 @@ getFollowing: (req, res) => {
   },
 
   comment: (req, res) => {
-    comment.postComment(req, res)
-    .then((comment) =>
-      res.send(comment));
-
+    comment.postComment(req, res).then((comment) => res.send(comment));
   },
 
   requestFollower: (req, res) => {
@@ -69,8 +67,10 @@ getFollowing: (req, res) => {
   },
 
   updateComment: (req, res) => {
-    comment.updateComment(req, res)
-    .then((comment)=> res.send(comment))
+    comment.updateComment(req, res).then((comment)=>{
+      console.log('comment updated')
+      res.send(comment);
+    })
   },
 
   deleteSubmission: (req, res) => {

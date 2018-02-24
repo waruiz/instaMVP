@@ -9,11 +9,15 @@ module.exports = {
   },
 
   getSubComments: (req, res) => {
+<<<<<<< HEAD
     let comments = db.Comments.findAll({
       where: {
         submission_id: req.params.sub
       },
     });
+=======
+    let comments = db.Comments.findAll({submission_id: req.body});
+>>>>>>> debugged comments, tidied directories
     return comments;
   },
 
