@@ -3,6 +3,15 @@ const getAllSubs = require("./models/getAllSubs");
 const johnny = require("./models/johnny");
 const comment = require("./models/comment");
 
+// const getAllSubs = require('./models/getAllSubs')
+
+const johnny = require('./models/johnny');
+
+const comment = require('./models/postComment');
+
+const will = require('./models/willEndpoints');
+
+
 module.exports = {
 
 getAllSubs: (req, res) => {
@@ -38,6 +47,13 @@ getFollowing: (req, res) => {
     res.send('getUserInfo Success');
   },
 
+  getPendingFollowers: (req, res) => {
+    will.getPendingFollowers(req, res)
+      .then(result => {
+        res.send(result);
+      })
+  },
+
   postInfo: (req, res) => {
     res.send('post Info Success');
   },
@@ -51,11 +67,17 @@ getFollowing: (req, res) => {
   },
 
   requestFollower: (req, res) => {
-    res.send('requestFollower Success');
+    will.requestFollower(req, res)
+      .then(data => {
+        res.end();
+      });
   },
 
   addFollower: (req, res) => {
-    res.send('addFollower Success');
+    will.addFollower(req, res)
+      .then(data => {
+        res.end();
+      })
   },
 
   updateInfo: (req, res) => {
