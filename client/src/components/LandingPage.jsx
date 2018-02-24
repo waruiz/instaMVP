@@ -5,6 +5,7 @@ class LandingPage extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
+<<<<<<< HEAD
       email: '',
       username: '',
       password: '',
@@ -20,15 +21,28 @@ class LandingPage extends React.Component {
   }
   login () {
     // axios.post('/login', );
+=======
+    }
+  }
+  logIn () {
+    axios.post('/login', );
+>>>>>>> Skeleton LandingPage component
   }
   render () {
     return (
       <div>
         <form id="sign-up">
+<<<<<<< HEAD
           <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
           <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
           <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
           <input type="submit" value="Sign Up" onClick={this.login} />
+=======
+          <input type="text" name="fullname" placeholder="Full Name" />
+          <input type="text" name="username" placeholder="Username" />
+          <input type="text" name="password" placeholder="Password" />
+          <input type="submit" value="Sign Up" />
+>>>>>>> Skeleton LandingPage component
         </form>
         <div>
           <p>Have an account? <a href="">Log in</a></p>
