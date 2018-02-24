@@ -1,14 +1,3 @@
-const Sequelize = require('sequelize');
-const connection = new Sequelize('insta', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-  pool: {
-    max: 20,
-    min: 0
-
-  }
-});
-
 const Users = connection.define('users', {
   id: {
     type: Sequelize.INTEGER,
@@ -50,6 +39,10 @@ const Submissions = connection.define('submissions', {
   caption: {
     type: Sequelize.STRING,
     allowNull: true,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   like_count: {
     type: Sequelize.INTEGER,
@@ -123,7 +116,7 @@ const Followers = connection.define('followers', {
     autoIncrement: true,
     primaryKey: true,
   },
-  host_id: {
+  user_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
     references: { model: Users,
@@ -143,9 +136,7 @@ const Followers = connection.define('followers', {
   }
 });
 
-
-connection.sync();
-
+connection.sync({force: true});
 
 module.exports = {
   Users,
