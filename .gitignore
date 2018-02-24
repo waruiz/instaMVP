@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 client/dist/bundle.js
+<<<<<<< HEAD
 node_modules
 =======
 client/dist/bundle.js
@@ -9,3 +10,7 @@ client/dist/bundle.js
 client/dist/bundle.js
 node_modules/
 >>>>>>> Ignore node_modules on GIT
+=======
+node_modules/
+package-lock.json
+>>>>>>> Ignore package-lock.json on GIT
