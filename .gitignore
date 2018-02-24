@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 client/dist/bundle.js
 node_modules
+=======
+client/dist/bundle.js
+>>>>>>> Ignore bundle.js builds
