@@ -1,8 +1,29 @@
+<<<<<<< HEAD
 const model = require("./models/model");
 const getAllSubs = require("./models/getAllSubs");
 const johnny = require("./models/johnny");
+<<<<<<< HEAD
 const comment = require("./models/comment");
+=======
+=======
+const model = require('./models/model');
+<<<<<<< HEAD
+const getAllSubs = require('./models/getAllSubs')
+>>>>>>> Fix MySQL load issues
+>>>>>>> Fix MySQL load issues
 
+=======
+
+// const getAllSubs = require('./models/getAllSubs')
+
+const johnny = require('./models/johnny');
+
+const comment = require('./models/postComment');
+
+const will = require('./models/willEndpoints');
+
+
+>>>>>>> Changes
 module.exports = {
 
 getAllSubs: (req, res) => {
