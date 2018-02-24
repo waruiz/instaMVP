@@ -55,7 +55,12 @@ getFollowing: (req, res) => {
   },
 
   postInfo: (req, res) => {
-    res.send('post Info Success');
+    johnny.createUser(req).then(function(result){
+      res.send('User Created!');
+    })
+    .catch(function(error){
+      console.log('ERRROR: ', error);
+    })
   },
 
   submit: (req, res) => {

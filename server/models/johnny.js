@@ -78,10 +78,6 @@ var getFollowing = function(req) {
   });
 };
 
-// {
-//   host_id: 1,
-//   follower_id: 2
-// }
 var deleteFollower = function(req) {
     db.Followers.destroy({
         where: req.body
