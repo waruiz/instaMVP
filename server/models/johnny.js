@@ -78,6 +78,26 @@ var getFollowing = function(req) {
   });
 };
 
+// {
+//   host_id: 1,
+//   follower_id: 2
+// }
+var deleteFollower = function(req) {
+    db.Followers.destroy({
+        where: req.body
+      })
+      .then(res.send('DELETED'))
+      .catch((err) => console.log(err, '<---- <ERROR>HERE</ERROR>'))
+}
+
+var deleteFollowing = function(req) {
+  db.Followers.destroy({
+      where: req.body
+    })
+    .then(res.send('DELETED'))
+    .catch((err) => console.log(err, '<---- <ERROR>HERE</ERROR>'))
+}
+
 module.exports = {
   createUser,
   getLikes,
