@@ -147,4 +147,10 @@ const Followers = connection.define('followers', {
 connection.sync();
 
 
-module.exports = connection;
+module.exports = {
+  Users,
+  Submissions,
+  Comments,
+  Likes,
+  Followers
+};
