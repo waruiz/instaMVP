@@ -10,7 +10,7 @@ router.get('/likes/:sub', controller.getSubLikes);
 router.get('/comments/:sub', controller.getSubComments);
 router.get('/info/:user', controller.getUserInfo);
 
-router.post('/login', controller.login);
+// router.post('/login', controller.login);
 router.post('/info', controller.postInfo);
 router.post('/submit', controller.submit);
 router.post('/comment', controller.comment);
