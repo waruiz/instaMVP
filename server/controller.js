@@ -1,5 +1,6 @@
 const model = require('./models/model');
 const getAllSubs = require('./models/getAllSubs')
+const johnny = require('./models/johnny')
 
 module.exports = {
 
@@ -11,7 +12,11 @@ module.exports = {
     },
 
     getFollowers: (req, res) => {
-      res.send('getFollowers Success');
+      console.log('reaches controller')
+      johnny.getFollowers(req).then((followers) => {
+        console.log('FOLLOWERS: ', followers)
+        res.send(followers);
+      })
     },
 
     getFollowing: (req, res) => {

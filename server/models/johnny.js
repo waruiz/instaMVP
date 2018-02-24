@@ -1,5 +1,6 @@
 const db = require('../../db/schema');
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 var createUser = function(req){
   db.Users.create(req.body);
@@ -13,8 +14,47 @@ var getInfo = function(req){
   db.Users.find(req.params);
 }
 
+var getFollowers = function(req){
+  return db.Users.findAll({
+    where: {
+      username: req.params.user
+    }
+  })
+  .then((result) => {
+    console.log('RESULTS FROM FIRST THEN: ', result[0].dataValues.id)
+    return db.Followers.findAll({
+      where: {
+        host_id: result[0].dataValues.id
+      }
+    })
+    .then((results) => {
+      var list = [];
+      results.forEach((element) => {
+        list.push(element.dataValues.id)
+      })
+      return db.Users.findAll({
+        where: {
+          id: {
+            [Op.or] : list
+          }
+        }
+      })
+      .then(function(results){
+        var list = [];
+        results.forEach(function(element){
+          list.push(element.dataValues);
+        })
+        console.log('FINAL RESULT: ', list)
+        return list;
+      })
+    })
+  })
+
+}
+
 module.exports = {
 createUser,
-getLikes
+getLikes,
+getFollowers
 }
 
