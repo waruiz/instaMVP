@@ -3,11 +3,7 @@ const getAllSubs = require("./models/getAllSubs");
 const johnny = require("./models/johnny");
 const comment = require("./models/comment");
 
-// const getAllSubs = require('./models/getAllSubs')
-
-const johnny = require('./models/johnny');
-
-const comment = require('./models/postComment');
+// const comment = require('./models/postComment');
 
 const will = require('./models/willEndpoints');
 
@@ -126,16 +122,8 @@ getFollowing: (req, res) => {
   },
 
   deleteUser: (req, res) => {
-    johnny.deleteFollowing(req).then(function(){})
-    res.send('delete User Success');
-  }
-
-
-
-
-
-
-
+      res.send('deleted user!');
+  },
 
 
 }

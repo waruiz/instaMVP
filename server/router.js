@@ -27,6 +27,7 @@ router.delete('/submit/:submission', controller.deleteSubmission);
 router.delete('/comment', controller.deleteComment);
 
 router.delete('/follower/:user', controller.deleteFollower);
-router.delete('/following/:user', controller.deleteUser);
+router.delete('/following/:user', controller.deleteFollowing);
+router.delete('/user', controller.deleteUser);
 
 module.exports = router;
