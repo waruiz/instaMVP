@@ -2,9 +2,6 @@ const model = require("./models/model");
 const getAllSubs = require("./models/getAllSubs");
 const johnny = require("./models/johnny");
 const comment = require("./models/comment");
-
-// const comment = require('./models/postComment');
-
 const will = require('./models/willEndpoints');
 
 

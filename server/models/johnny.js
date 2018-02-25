@@ -13,7 +13,6 @@ var getLikes = function(req) {
 };
 
 var getUserInfo = function(req) {
-  console.log('LOOKIE HERE !!!', req.params)
   return db.Users.find({
     where: req.params
   });
