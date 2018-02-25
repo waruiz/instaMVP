@@ -82,7 +82,7 @@ const Comments = connection.define('comments', {
   },
   user_id: {
     type: Sequelize.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: { model: Users,
       key: 'id',
       }
