@@ -8,4 +8,4 @@ const getAllSubs = () => {
 }
 
 
-module.exports = getAllSubs;
+module.exports.getAllSubs = getAllSubs;
