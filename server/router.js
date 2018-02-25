@@ -8,12 +8,8 @@ router.get('/followers/:user', controller.getFollowers);
 router.get('/following/:user', controller.getFollowing);
 router.get('/likes/:sub', controller.getSubLikes);
 router.get('/comments/:sub', controller.getSubComments);
-<<<<<<< HEAD
-router.get('/info/:user', controller.getUserInfo);
 router.get('/pending/:user', controller.getPendingFollowers);
-=======
 router.get('/info/:username', controller.getUserInfo);
->>>>>>> fixed some functions
 
 // router.post('/login', controller.login);
 router.post('/info', controller.postInfo);
