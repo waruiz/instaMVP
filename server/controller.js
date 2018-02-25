@@ -4,7 +4,6 @@ const johnny = require("./models/johnny");
 const comment = require("./models/comment");
 const will = require('./models/willEndpoints');
 
-
 module.exports = {
 
 getAllSubs: (req, res) => {
