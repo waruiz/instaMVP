@@ -30,9 +30,9 @@ class LandingPage extends React.Component {
     return (
       <div>
         <form id="sign-up">
-          <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
-          <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
-          <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
+          <input type="text" name="email" placeholder="Email" autoComplete="email" onChange={this.handleChange} />
+          <input type="text" name="username" placeholder="Username" autoComplete="off" onChange={this.handleChange} />
+          <input type="text" name="password" placeholder="Password" autoComplete="off" onChange={this.handleChange} />
           <input type="submit" value="Sign Up" onClick={this.login} />
         </form>
         <div>
