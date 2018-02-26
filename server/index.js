@@ -23,10 +23,9 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use(router);
 
-app.get("/", (req, res)=> {
-	res.send("shit works, yo");
-});
-
+app.get('/*', (req, res)=> {
+  res.sendFile( path.resolve(__dirname, '../client/dist', 'index.html') );
+})
 
 app.listen(8080, () => console.log("I HEAR YOU ON 8080 MY DUDE"));
 
