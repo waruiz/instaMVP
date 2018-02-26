@@ -1,12 +1,17 @@
 const db = require('../../db/schema');
 
 const postSubmit = (req, res) => {
-  db.Submissions.create({
-    username: req.body.username,
-    password: req.body.password,
-    name: req.body.name,
-    gender: req.body.gender,
-    profile_pic: req.body.profile_pic
+  return db.Users.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+  .then(data => {
+    return db.Submissions.create({
+      image_url: req.body.image_url,
+      caption: req.body.caption,
+      user_id: data.dataValues.id
+    });
   });
 };
 
