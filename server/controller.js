@@ -61,7 +61,10 @@ getFollowing: (req, res) => {
   },
 
   submit: (req, res) => {
-    res.send('submit Success');
+    will.postSubmit(req)
+      .then(result => {
+        res.status(201).end();
+      })
   },
 
   comment: (req, res) => {
