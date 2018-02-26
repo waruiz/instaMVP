@@ -20,12 +20,7 @@ router.put('/info', controller.updateInfo);
 router.put('/submit', controller.updateSubmission);
 router.put('/comment', controller.updateComment);
 
-<<<<<<< HEAD
 router.delete('/submit/:submission', controller.deleteSubmission);
-=======
-router.delete('/submit', controller.deleteSubmission);
-
->>>>>>> nelson changes
 router.delete('/comment', controller.deleteComment);
 router.delete('/follower/:user', controller.deleteFollower);
 router.delete('/following/:user', controller.deleteFollowing);
