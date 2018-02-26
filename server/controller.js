@@ -1,5 +1,5 @@
 const model = require("./models/model");
-const getAllSubs = require("./models/getAllSubs");
+const nelson = require("./models/nelson");
 const johnny = require("./models/johnny");
 const comment = require("./models/comment");
 const will = require('./models/willEndpoints');
@@ -101,7 +101,9 @@ getFollowing: (req, res) => {
   },
 
   deleteSubmission: (req, res) => {
-    res.send('delete submission Success');
+    nelson.deleteSubmission(req).then((result) =>{
+      res.send('delete success')
+    })
   },
 
   deleteComment: (req, res) => {
@@ -121,8 +123,12 @@ getFollowing: (req, res) => {
   },
 
   deleteUser: (req, res) => {
-      res.send('deleted user!');
+    nelson.deleteUser(req).then((result)=>{
+      res.send('delete User Success');
+    })
   },
 
 
 }
+
+
