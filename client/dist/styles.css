@@ -1,0 +1,24 @@
+
+* {
+  border: 1;
+}
+
+.commentList {
+  list-style: none;
+}
+
+.commentText {
+  padding-left: .5em;
+}
+
+.commentMeta {
+  color:#888888;
+  font-size: 80%;
+  padding-left: .8em;
+
+}
+
+.userCell {
+  vertical-align: top;
+
+}
