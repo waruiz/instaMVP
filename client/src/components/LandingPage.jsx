@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+
 class LandingPage extends React.Component {
   constructor (props) {
     super (props);
@@ -19,7 +20,7 @@ class LandingPage extends React.Component {
     this.setState({[name]: value});
     console.log(this.state);
   }
-  
+
   login () {
     // axios.post('/login', );
     }
