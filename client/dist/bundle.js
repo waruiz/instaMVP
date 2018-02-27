@@ -60,12 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 21:
+/******/ ([
+/* 0 */
 /*!******************************!*\
   !*** ./client/src/index.jsx ***!
   \******************************/
@@ -73,8 +72,7 @@
 /*! all exports used */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module build failed: Duplicate declaration \\\"App\\\"\\n\\n\\u001b[0m \\u001b[90m 15 | \\u001b[39m\\u001b[36mconst\\u001b[39m store \\u001b[33m=\\u001b[39m createStore(allReducers)\\u001b[33m;\\u001b[39m\\n \\u001b[90m 16 | \\u001b[39m\\n\\u001b[31m\\u001b[1m>\\u001b[22m\\u001b[39m\\u001b[90m 17 | \\u001b[39m\\u001b[36mclass\\u001b[39m \\u001b[33mApp\\u001b[39m \\u001b[36mextends\\u001b[39m \\u001b[33mReact\\u001b[39m\\u001b[33m.\\u001b[39m\\u001b[33mComponent\\u001b[39m {\\n \\u001b[90m    | \\u001b[39m      \\u001b[31m\\u001b[1m^\\u001b[22m\\u001b[39m\\n \\u001b[90m 18 | \\u001b[39m  constructor(props) {\\n \\u001b[90m 19 | \\u001b[39m    \\u001b[36msuper\\u001b[39m(props)\\u001b[33m;\\u001b[39m\\n \\u001b[90m 20 | \\u001b[39m  }\\u001b[0m\\n\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMjEuanMiLCJzb3VyY2VzIjpbXSwibWFwcGluZ3MiOiIiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///21\n");
+eval("throw new Error(\"Module build failed: Duplicate declaration \\\"App\\\"\\n\\n\\u001b[0m \\u001b[90m 15 | \\u001b[39m\\u001b[36mconst\\u001b[39m store \\u001b[33m=\\u001b[39m createStore(allReducers)\\u001b[33m;\\u001b[39m\\n \\u001b[90m 16 | \\u001b[39m\\n\\u001b[31m\\u001b[1m>\\u001b[22m\\u001b[39m\\u001b[90m 17 | \\u001b[39m\\u001b[36mclass\\u001b[39m \\u001b[33mApp\\u001b[39m \\u001b[36mextends\\u001b[39m \\u001b[33mReact\\u001b[39m\\u001b[33m.\\u001b[39m\\u001b[33mComponent\\u001b[39m {\\n \\u001b[90m    | \\u001b[39m      \\u001b[31m\\u001b[1m^\\u001b[22m\\u001b[39m\\n \\u001b[90m 18 | \\u001b[39m  constructor(props) {\\n \\u001b[90m 19 | \\u001b[39m    \\u001b[36msuper\\u001b[39m(props)\\u001b[33m;\\u001b[39m\\n \\u001b[90m 20 | \\u001b[39m  }\\u001b[0m\\n\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///0\n");
 
 /***/ })
-
-/******/ });
+/******/ ]);
