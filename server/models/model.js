@@ -1,7 +1,7 @@
-const db = require('../../db/schema');
+const db = require("../../db/schema");
 
 
 module.exports = {
 
 
-}
+};

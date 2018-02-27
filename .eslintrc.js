@@ -1,6 +1,7 @@
 module.exports = {
     "env": {
-        "browser": true
+        "browser": true,
+        "node": true
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -20,5 +21,10 @@ module.exports = {
             "error",
             "always"
         ]
-    }
+    },
+    "parserOptions": {
+        "ecmaVersion": 6
+      }
+     
+    
 };
