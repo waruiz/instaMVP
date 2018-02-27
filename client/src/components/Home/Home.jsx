@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Submit from './Submit.jsx';
 import Add from './Add.jsx';
 import Requests from './Requests.jsx';
-import User from '../User.jsx';
+// import User from '../User.jsx';
 import Timeline from './Timeline/Timeline.jsx';
 
 class Home extends React.Component {
@@ -26,7 +26,7 @@ class Home extends React.Component {
               <Link to="/requests">Requests</Link>
             </li>
             <li>
-              <Link to="/user">User</Link>
+              {/* <Link to="/user">User</Link> */}
             </li>
           </ul>
         </nav>
