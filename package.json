@@ -21,9 +21,13 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "passport": "^0.4.0",
+<<<<<<< HEAD
     "path": "^0.12.7",
     "react-bootstrap": "^0.32.1",
     "react-style": "^0.5.5",
+=======
+    "react-redux": "^5.0.7",
+>>>>>>> boilerplate for redux
     "redux": "^3.7.2",
     "request": "^2.83.0",
     "sequelize": "^4.34.0",
