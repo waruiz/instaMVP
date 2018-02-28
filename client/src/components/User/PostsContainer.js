@@ -25,7 +25,6 @@ class PostsContainer extends React.Component {
   onComponentDidMount () {
     axios.get(`/subs/4`)
       .then(result => {
-        console.log(this.props);
         this.props.updateUserPosts(result.data);
       })
   }
