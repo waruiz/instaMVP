@@ -36,7 +36,7 @@ acceptFollowerRequest : (host_id, follower_id) => {
 // export const denyFollowerRequest;
 
 // LEFT OFF HERE
-addSomeoneToFollow : () => {
+addSomeoneToFollow: () => {
   return {
     type: 'ADD_SOMEONE_TO_FOLLOW',
   }
