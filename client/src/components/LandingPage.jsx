@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-
+// import Home from './Home/Home.jsx';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import Navbar from './Home/Navbar.jsx';
 
 class LandingPage extends React.Component {
   constructor (props) {
@@ -29,6 +31,7 @@ class LandingPage extends React.Component {
   render () {
     return (
       <div>
+        <Navbar />
         <form id="sign-up">
           <input type="text" name="email" placeholder="Email" autoComplete="email" onChange={this.handleChange} />
           <input type="text" name="username" placeholder="Username" autoComplete="off" onChange={this.handleChange} />
