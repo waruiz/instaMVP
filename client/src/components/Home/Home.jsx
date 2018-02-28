@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Submit from './Submit.jsx';
 import Add from './Add.jsx';
 import Requests from './Requests.jsx';
+<<<<<<< HEAD
 import User from './User.jsx';
+=======
+import User from '../User.jsx';
+>>>>>>> rebasing
 import Timeline from './Timeline/Timeline.jsx';
 
 class Home extends React.Component {
