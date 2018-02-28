@@ -12,6 +12,13 @@ getAllSubs: (req, res) => {
 	});
 },
 
+getUserSubs: (req, res) => {
+  will.getUserSubs(req, res)
+    .then(data => {
+      res.send(data);
+    })
+},
+
 getFollowers: (req, res) => {
   johnny.getFollowers(req).then(followers => {
     res.send(followers);

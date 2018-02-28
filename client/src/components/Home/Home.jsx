@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Submit from "./Submit.jsx";
 import Add from "./Add.jsx";
 import Requests from "./Requests.jsx";
-import User from "./User.jsx";
+import User from "../User.jsx";
 import Timeline from "./Timeline/Timeline.jsx";
 import { connect } from "react-redux";
 import actions from "../../Redux/actions/index";
@@ -30,7 +30,6 @@ class Home extends React.Component {
 
   getSubmissions() {
     console.log(this.props);
-    var context = this;
     axios.get('/subs')
       .then((response) => {
         console.log('THIS IS THE RESPONSE ', response.data);
