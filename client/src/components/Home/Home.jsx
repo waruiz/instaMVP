@@ -38,7 +38,7 @@ class Home extends React.Component {
         <Route path="/submit" component={Submit} />
         <Route path ="/add" component={Add} />
         <Route path="/requests" component={Requests} />
-        <Route path="/user" component={User} />
+        {/* <Route path="/user" component={User} /> */}
       </div>
     );
   }
