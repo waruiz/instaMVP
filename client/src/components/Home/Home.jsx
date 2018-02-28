@@ -1,17 +1,48 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Submit from './Submit.jsx';
-import Add from './Add.jsx';
-import Requests from './Requests.jsx';
-import User from './User.jsx';
-import Timeline from './Timeline/Timeline.jsx';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Submit from "./Submit.jsx";
+import Add from "./Add.jsx";
+import Requests from "./Requests.jsx";
+import User from "./User.jsx";
+import Timeline from "./Timeline/Timeline.jsx";
+import { connect } from "react-redux";
+import actions from "../../Redux/actions/index";
+import axios from 'axios';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateTimeline: submissions => dispatch(actions.updateTimeline(submissions))
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    timelineState: state.timelineState
+  };
+};
+
 
 class Home extends React.Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
+    this.getSubmissions = this.getSubmissions.bind(this);
   }
 
-  render () {
+  getSubmissions() {
+    console.log(this.props);
+    var context = this;
+    axios.get('/subs')
+      .then((response) => {
+        console.log('THIS IS THE RESPONSE ', response.data);
+        console.log('this is our props ', this.props.updateTimeline);
+        this.props.updateTimeline(response.data);
+      })
+      .catch((error) => {
+        console.log('ERROR IS: ', error);
+      })
+  }
+
+  render() {
     return (
       <div>
         <h1>Insta Home</h1>
@@ -31,13 +62,20 @@ class Home extends React.Component {
             </li>
           </ul>
         </nav>
-        
+
         <div id="timeline">
           <h1>My Timeline</h1>
+          <button onClick={this.getSubmissions}>GET SUBMISSIONS</button>
+          {this.props.timelineState.map((item) => {
+            
+            return(<div>{item.caption}</div>)
+          })}
+
+
           <Timeline />
         </div>
         <Route path="/submit" component={Submit} />
-        <Route path ="/add" component={Add} />
+        <Route path="/add" component={Add} />
         <Route path="/requests" component={Requests} />
         {/* <Route path="/user" component={User} /> */}
       </div>
@@ -45,4 +83,6 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+
+const Homepage = connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Homepage;
