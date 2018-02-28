@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './Home/Home.jsx';
-
+import PostsContainerPage from './User/PostsContainer.js';
 
 class User extends React.Component {
   constructor (props) {
     super (props);
   }
+  // axios
   render () {
+    // mapping over axios res
     return (
       <div>
         <nav>
@@ -15,9 +17,7 @@ class User extends React.Component {
         </nav>
         <h1>User Page</h1>
         
-        <div id="timeline">
-          <h1>My Submissions</h1>
-        </div>
+        <PostsContainerPage />
         <Route path="/home" component={Home} />
       </div>
     );
