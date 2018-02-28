@@ -1,5 +1,16 @@
 const db = require("../../db/schema");
 
+const getUserSubs = (req, res) => {
+	return db.Submissions.findAll({
+		where: {
+			user_id: req.params.user
+		}
+	})
+	.then(data => {
+		return data;
+	});
+};
+
 const postSubmit = (req, res) => {
   return db.Users.findOne({
     where: {
@@ -107,5 +118,6 @@ module.exports = {
 	postSubmit,
 	getPendingFollowers,
 	addFollower,
-	requestFollower
+	requestFollower,
+	getUserSubs
 };
