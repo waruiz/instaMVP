@@ -52,7 +52,13 @@ addSomeoneToFollow : () => {
       type: 'UPDATE_TIMELINE',
       payload: submissions
 
-    })
+    }),
 
+    updateUserPosts: (posts) => (
+      {
+        type: 'UPDATE_USER_POSTS',
+        payload: posts
+      }
+    )
   
 }
