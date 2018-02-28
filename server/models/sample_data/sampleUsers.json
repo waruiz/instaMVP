@@ -4,28 +4,32 @@
     "password": "123",
     "name": "Will Ruiz",
     "gender": "M",
-    "profile_pic": "Will.com"
+    "profile_pic": "Will.com",
+    "about": "Hi! I am Will.I.Am."
   },
   {
     "username": "thejhnny",
     "password": "123",
     "name": "Johnny Siu",
     "gender": "M",
-    "profile_pic": "Johnny.com"
+    "profile_pic": "Johnny.com",
+    "about": "It's Johnny!"
   },
   {
     "username": "michaelwachell",
     "password": "123",
     "name": "Michael Wachell",
     "gender": "M",
-    "profile_pic": "Michael.com"
+    "profile_pic": "Michael.com",
+    "about": "Je m'apelle Mike!"
   },
   {
     "username": "nelsonchen5",
     "password": "123",
     "name": "Nelson Chen",
     "gender": "M",
-    "profile_pic": "Nelson.com"
+    "profile_pic": "Nelson.com",
+    "about": "Hey hey, it's Nelson!"
   },
   {
     "username": "superman",
