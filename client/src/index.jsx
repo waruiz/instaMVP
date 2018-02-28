@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from "redux";
-// import allReducers from "./reducers";
+import allReducers from "./Redux/reducers";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Link, Route, IndexRoute } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ import Navbar from './components/Home/Navbar.jsx'
 import CommentList from './components/Home/CommentList.jsx'
 import User from './components/User.jsx';
 
-// const store = createStore(allReducers);
+const store = createStore(allReducers);
 
 class App extends React.Component {
   constructor(props) {
@@ -31,10 +31,11 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  
+  <Provider store={store}>
     <Router>
       <App />
     </Router>
+  </Provider>
   ,
   document.getElementById("app")
 );
