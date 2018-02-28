@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Submit from "./Submit.jsx";
-import Add from "./Add.jsx";
+import AddContainer from "./Add.jsx";
 import Requests from "./Requests.jsx";
 import User from "../User.jsx";
 import Timeline from "./Timeline/Timeline.jsx";
 import { connect } from "react-redux";
 import actions from "../../Redux/actions/index";
-import axios from 'axios';
+import axios from "axios";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -21,7 +21,6 @@ const mapStateToProps = state => {
   };
 };
 
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -30,16 +29,19 @@ class Home extends React.Component {
 
   getSubmissions() {
     console.log(this.props);
-    axios.get('/subs')
-      .then((response) => {
-        console.log('THIS IS THE RESPONSE ', response.data);
-        console.log('this is our props ', this.props.updateTimeline);
+    axios
+      .get("/subs")
+      .then(response => {
+        console.log("THIS IS THE RESPONSE ", response.data);
+        console.log("this is our props ", this.props.updateTimeline);
         this.props.updateTimeline(response.data);
       })
-      .catch((error) => {
-        console.log('ERROR IS: ', error);
-      })
+      .catch(error => {
+        console.log("ERROR IS: ", error);
+      });
   }
+
+ 
 
   render() {
     return (
@@ -52,6 +54,7 @@ class Home extends React.Component {
             </li>
             <li>
               <Link to="/add">Add</Link>
+              <AddContainer />
             </li>
             <li>
               <Link to="/requests">Requests</Link>
@@ -65,23 +68,20 @@ class Home extends React.Component {
         <div id="timeline">
           <h1>My Timeline</h1>
           <button onClick={this.getSubmissions}>GET SUBMISSIONS</button>
-          {this.props.timelineState.map((item) => {
-            
-            return(<div>{item.caption}</div>)
+          {this.props.timelineState.map(item => {
+            return <div>{item.caption}</div>;
           })}
-
 
           <Timeline />
         </div>
         <Route path="/submit" component={Submit} />
-        <Route path="/add" component={Add} />
+        <Route path="/add" component={AddContainer} />
         <Route path="/requests" component={Requests} />
         {/* <Route path="/user" component={User} /> */}
       </div>
     );
   }
 }
-
 
 const Homepage = connect(mapStateToProps, mapDispatchToProps)(Home);
 export default Homepage;
