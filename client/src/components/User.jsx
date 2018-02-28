@@ -11,7 +11,7 @@ class User extends React.Component {
     return (
       <div>
         <nav>
-          <Link to="/home">User</Link>
+          <Link to="/home">Home</Link>
         </nav>
         <h1>User Page</h1>
         
