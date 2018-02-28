@@ -22,7 +22,7 @@ class PostsContainer extends React.Component {
     this.getUserPosts = this.getUserPosts.bind(this);
   }
 
-  getUserPosts () {
+  onComponentDidMount () {
     axios.get(`/subs/4`)
       .then(result => {
         console.log(this.props);
