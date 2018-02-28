@@ -2,6 +2,7 @@ const router = require ('express').Router();
 const controller = require('./controller')
 
 router.get('/subs', controller.getAllSubs);
+router.get('/subs/:user', controller.getUserSubs);
 router.get('/followers/:user', controller.getFollowers);
 router.get('/following/:user', controller.getFollowing);
 router.get('/likes/:sub', controller.getSubLikes);
