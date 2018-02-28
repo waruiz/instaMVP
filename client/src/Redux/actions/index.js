@@ -22,11 +22,24 @@ export const addSubmission = (image_url, caption, user_id) => {
   }
 };
 
-export const addFollower;
 
-export const acceptFollowerRequest;
+export const acceptFollowerRequest = (host_id, follower_id) => {
+  return {
+    type: 'ADD_FOLLOWER',
+    host_id,
+    follower_id,
+    pending: false
+  }
+};
 
 export const denyFollowerRequest;
+
+// LEFT OFF HERE
+export const addSomeoneToFollow = () => {
+  return {
+    type: 'ADD_SOMEONE_TO_FOLLOW',
+  }
+};
 
 export const navigateToUserProfile;
 
