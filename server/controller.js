@@ -11,32 +11,23 @@ module.exports = {
     });
   },
 
-<<<<<<< HEAD
-getAllSubs: (req, res) => {
-	nelson.getAllSubs().then(submissions => {
-		res.send(submissions);
-	});
-},
+  getAllSubs: (req, res) => {
+    nelson.getAllSubs().then(submissions => {
+      res.send(submissions);
+    });
+  },
 
-getUserSubs: (req, res) => {
-  will.getUserSubs(req, res)
-    .then(data => {
+  getUserSubs: (req, res) => {
+    will.getUserSubs(req, res).then(data => {
       res.send(data);
-    })
-},
+    });
+  },
 
-getFollowers: (req, res) => {
-  johnny.getFollowers(req).then(followers => {
-    res.send(followers);
-  });
-},
-=======
   getFollowers: (req, res) => {
     johnny.getFollowers(req).then(followers => {
       res.send(followers);
     });
   },
->>>>>>> add route /subs/following/:user and function to get subs by following
 
   getFollowing: (req, res) => {
     johnny.getFollowing(req).then(following => {
@@ -67,11 +58,11 @@ getFollowers: (req, res) => {
       res.send(result);
     });
   },
-  
+
   getSubsByFollowing: (req, res) => {
-    johnny.getSubsByFollowing(req, res).then(result =>{
+    johnny.getSubsByFollowing(req, res).then(result => {
       res.send(result);
-    })
+    });
   },
 
   postInfo: (req, res) => {
