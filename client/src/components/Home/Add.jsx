@@ -27,7 +27,7 @@ class Add extends React.Component {
   postSubmission() {
     axios
       .post("/submit", {
-        username: "Nelson",
+        username: "nelsonchen5",
         image_url: this.props.addState.image_url,
         caption: this.props.addState.caption,
       })
