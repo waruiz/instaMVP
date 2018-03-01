@@ -5,13 +5,17 @@ import userPostsState from './userPostsState';
 import addState from './add-reducer';
 import followersState from './reducer-followers';
 import followingState from './reducer-following';
+import userInfoState from './userInfoState';
+import addRequestState from './addRequestState';
 
 const allReducers = combineReducers({
   timelineState,
   userPostsState,
   addState,
   followersState,
-  followingState
+  followingState,
+  userInfoState,
+  addRequestState
 });
 
 export default allReducers;

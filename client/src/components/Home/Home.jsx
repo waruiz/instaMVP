@@ -52,6 +52,7 @@ class Home extends React.Component {
             </li>
             <li>
               <Link to="/requests">Requests</Link>
+              <Requests />
             </li>
             <li>
               <Link to="/user">User</Link>
