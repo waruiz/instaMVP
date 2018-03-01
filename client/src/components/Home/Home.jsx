@@ -63,9 +63,9 @@ class Home extends React.Component {
         <div id="timeline">
           <h1>My Timeline</h1>
           {this.props.timelineState.map((item, i) => {
-            return (<div key={i}>
+            return (<div align="center" key={i}>
               <h5>{item.username}</h5>
-              <img src={item.image_url} alt=""/>
+              <img width="40%"  src={item.image_url} alt=""/>
               <p>{item.caption}</p>
               </div>);
           })}
