@@ -66,8 +66,8 @@ class App extends React.Component {
     
     auth
       .signInWithEmailAndPassword(email.value, password.value)
-      .then(async response => {
-        await this.props.updateCurrUser(response.email);
+      .then( response => {
+        this.props.updateCurrUser(response.email);
         console.log(this.props.currUser);
         console.log('STATE CHANGE COMPLETE')
       })
@@ -130,6 +130,7 @@ class App extends React.Component {
             Log out
           </button>
         </div>
+        {console.log(this.props)}
         <Route
           exact
           path="/"
