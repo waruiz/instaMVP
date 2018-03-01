@@ -31,16 +31,17 @@ class LandingPage extends React.Component {
   render () {
     return (
       <div>
-        <Navbar />
+        <h2>LOGIN DAWG</h2>
+        {/* <Navbar /> */}
         {/* <form id="sign-up">
           <input type="text" name="email" placeholder="Email" autoComplete="email" onChange={this.handleChange} />
           <input type="text" name="username" placeholder="Username" autoComplete="off" onChange={this.handleChange} />
           <input type="text" name="password" placeholder="Password" autoComplete="off" onChange={this.handleChange} />
           <input type="submit" value="Sign Up" onClick={this.login} />
         </form> */}
-        <div>
+        {/* <div>
           <p>Have an account? <a href="">Log in</a></p>
-        </div>
+        </div> */}
       </div>
     );
   }

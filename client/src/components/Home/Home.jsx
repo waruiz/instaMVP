@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import Submit from "./Submit.jsx";
 import AddContainer from "./Add.jsx";
 import Requests from "./Requests.jsx";
@@ -8,6 +8,8 @@ import Timeline from "./Timeline/Timeline.jsx";
 import { connect } from "react-redux";
 import actions from "../../Redux/actions/index";
 import axios from "axios";
+import LandingPage from '../LandingPage.jsx';
+import { browerHistory, Redirect } from "react-router";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -17,6 +19,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    currUser: state.currUser,
     timelineState: state.timelineState
   };
 };
@@ -63,15 +66,17 @@ class Home extends React.Component {
         <div id="timeline">
           <h1>My Timeline</h1>
           {this.props.timelineState.map((item, i) => {
-            return (<div align="center" key={i}>
-              <h5>{item.username}</h5>
-              <img width="40%"  src={item.image_url} alt=""/>
-              <p>{item.caption}</p>
-              </div>);
+            return (
+              <div align="center" key={i}>
+                <img width="40%" src={item.image_url} alt="" />
+                <p>{item.caption}</p>
+              </div>
+            );
           })}
-
-          <Timeline />
+          {(this.props.currUser ? (<Redirect to="/home"/>) : (<Redirect to="/"/>))}
         </div>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/user" component={User} />
         <Route path="/submit" component={Submit} />
         <Route path="/add" component={AddContainer} />
         <Route path="/requests" component={Requests} />
@@ -80,5 +85,5 @@ class Home extends React.Component {
   }
 }
 
-const Homepage = connect(mapStateToProps, mapDispatchToProps)(Home);
+const Homepage = withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
 export default Homepage;

@@ -7,7 +7,9 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  IndexRoute
+  IndexRoute,
+  BrowserRouter,
+  withRouter
 } from "react-router-dom";
 
 // import App from "./components/app.jsx";
@@ -98,7 +100,8 @@ class App extends React.Component {
     firebase
       .auth()
       .signOut()
-      .then(() => {
+      .then((response) => {
+        console.log('response from logout: ', response)
         this.props.updateCurrUser(null);
         console.log(this.props);
       });
@@ -107,7 +110,6 @@ class App extends React.Component {
   render(props) {
     return (
       <div>
-        <h1>{this.props.currUser}</h1>
         <div id="login">
           <input type="email" id="email" placeholder="Email" />
           <input type="password" id="password" placeholder="Password" />
@@ -130,33 +132,39 @@ class App extends React.Component {
             Log out
           </button>
         </div>
-        {console.log(this.props)}
-        <Route
+        {console.log('CURR USER ', this.props)}
+        {(this.props.currUser ? (<Redirect to="/home"/>) : (<Redirect to="/"/>))}
+
+        {/* <Route
           exact
           path="/"
-          render={() =>
-            this.props.currUser !== null ? (
+          render={() =>(
+            this.props.currUser ? (
               <Redirect to="/home" />
             ) : (
               <Redirect to="/" />
             )
+          )
           }
-        />
-        <Route path="/" component={LandingPage} />
+        /> */}
+
+        <Route exact path="/" component={LandingPage} />
         <Route path="/home" component={Home} />
         <Route path="/user" component={User} />
+
       </div>
     );
   }
 }
 
-App = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
+      <Router>
+      <AppPage />
     </Router>
-  </Provider>,
+  </Provider>
+  ,
   document.getElementById("app")
 );
