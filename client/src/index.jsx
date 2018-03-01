@@ -5,8 +5,8 @@ import allReducers from "./Redux/reducers";
 import { Provider } from "react-redux";
 import {
   BrowserRouter as Router,
-  Link,
   Route,
+  Link,
   IndexRoute
 } from "react-router-dom";
 
@@ -21,10 +21,11 @@ import * as firebase from "firebase";
 
 import { connect } from "react-redux";
 import actions from "./Redux/actions/index";
+import { browerHistory, Redirect } from "react-router";
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateCurrUser: followers => dispatch(actions.updateCurrUser(followers))
+    updateCurrUser: user => dispatch(actions.updateCurrUser(user))
   };
 };
 
@@ -50,49 +51,58 @@ const store = createStore(allReducers);
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.login = this.login.bind(this);
+    this.signUp = this.signUp.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   login() {
     const auth = firebase.auth();
     const email = document.getElementById("email");
-    console.log(email.value);
-    const password = document.getElementById("password");
-    const btnLogin = document.getElementById("btnLogin");
-    const btnSignUp = document.getElementById("btnSignUp");
-    const btnLogout = document.getElementById("btnLogout");
-    var context = this;
-    auth.signInWithEmailAndPassword(email.value, password.value)
-    .then((response) => {
-      console.log('RESPONSE EMAIL: ', response.email);
-      console.log('RIGHT HEREEE', this.props)
-      this.props.updateCurrUser(response.email);
-      console.log(context.props.currUser)
-    })
-    .catch(function(error){
-      console.log('ERROR: ', error)
-    })
-  }
-
-  signUp() {
-    const auth = firebase.auth();
-    const email = document.getElementById("email");
-    console.log(email.value);
     const password = document.getElementById("password");
     const btnLogin = document.getElementById("btnLogin");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
     
-    auth.createUserWithEmailAndPassword(email.value, password.value)
-    .then(function(response){
-      console.log('RESPONSE: ' ,response)
-      
-    })
-    .catch(function(error){
-      console.log('ERROR: ', error)
-    })
+    auth
+      .signInWithEmailAndPassword(email.value, password.value)
+      .then(async response => {
+        await this.props.updateCurrUser(response.email);
+        console.log(this.props.currUser);
+        console.log('STATE CHANGE COMPLETE')
+      })
+      .catch(function(error) {
+        console.log("ERROR: ", error);
+      });
   }
 
+  signUp() {
+    const auth = firebase.auth();
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const btnLogin = document.getElementById("btnLogin");
+    const btnSignUp = document.getElementById("btnSignUp");
+    const btnLogout = document.getElementById("btnLogout");
 
+    auth
+      .createUserWithEmailAndPassword(email.value, password.value)
+      .then(function(response) {
+        console.log("RESPONSE: ", response);
+      })
+      .catch(function(error) {
+        console.log("ERROR: ", error);
+      });
+  }
+
+  logout() {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        this.props.updateCurrUser(null);
+        console.log(this.props);
+      });
+  }
 
   render(props) {
     return (
@@ -102,18 +112,36 @@ class App extends React.Component {
           <input type="email" id="email" placeholder="Email" />
           <input type="password" id="password" placeholder="Password" />
 
-          <button id="btnLogin" onClick={this.login} className="btn btn-action">
+          <button id="btnLogin" onClick={() => this.login()} className="btn btn-action">
             Login
           </button>
-          <button id="btnSignUp" onClick={this.signUp} className="btn btn-secondary">
+          <button
+            id="btnSignUp"
+            onClick={this.signUp}
+            className="btn btn-secondary"
+          >
             Sign Up
           </button>
-          <button id="btnLogout" id="btnLogout" className="btn btn-action hide">
+          <button
+            id="btnLogout"
+            onClick={this.logout}
+            className="btn btn-action hide"
+          >
             Log out
           </button>
         </div>
-
-        <Route exact path="/" component={LandingPage} />
+        <Route
+          exact
+          path="/"
+          render={() =>
+            this.props.currUser !== null ? (
+              <Redirect to="/home" />
+            ) : (
+              <Redirect to="/" />
+            )
+          }
+        />
+        <Route path="/" component={LandingPage} />
         <Route path="/home" component={Home} />
         <Route path="/user" component={User} />
       </div>
@@ -121,9 +149,7 @@ class App extends React.Component {
   }
 }
 
-const AppPage = connect(mapStateToProps, mapDispatchToProps)(App);
-
-export default AppPage;
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 ReactDOM.render(
   <Provider store={store}>

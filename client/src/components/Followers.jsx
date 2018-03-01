@@ -6,7 +6,7 @@ import actions from "../Redux/actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateCurrUser: user => dispatch(actions.updateCurruser(user))
+    updateFollowers: followers => dispatch(actions.updateFollowers(followers))
   };
 };
 
