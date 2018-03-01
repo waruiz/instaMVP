@@ -18,7 +18,7 @@ const mapStateToProps = state => {
 class PostsContainer extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.getUserPosts = this.getUserPosts.bind(this);
   }
 
@@ -44,28 +44,10 @@ class PostsContainer extends React.Component {
               })
             }
 
-  constructor (props) {
-    super (props);
-  }
-  componentDidMount () {
-    axios.get(`/subs/4`)
-      .then(result => {
-        this.props.updateUserPosts(result.data);
-      })
-  }
-  render () {
-    return (
-      <div id="posts-container">
-        <h1>Posts</h1>
-        {this.props.userPostsState.map((post, i) => {
-          return (
-          <div key ={i}>
-            {post.image_url}
-
-          </div>
         </div>
       </div>
 
+    </div>
     </div>);
   }
 }
