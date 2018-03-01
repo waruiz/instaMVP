@@ -34,6 +34,10 @@ const Users = connection.define("users", {
 	},
 	profile_pic: {
 		type: Sequelize.STRING
+	},
+	about: {
+		type: Sequelize.STRING,
+		allowNull: true
 	}
 });
 

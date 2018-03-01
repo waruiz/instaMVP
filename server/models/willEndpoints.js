@@ -51,7 +51,6 @@ const requestFollower = (req, res) => {
 				pending: true
 			})
 				.then(newFollowing => {
-					console.log("NEW FOLLOWING: ", newFollowing);
 					return newFollowing;
 				});
 		});
@@ -102,17 +101,6 @@ const addFollower = (req, res) => {
 			});
 		});
 };
-
-// const login = (req, res) => {
-//   // Implement with Firebase
-// };
-
-// module.exports = {
-//   postSubmit,
-//   requestFollower,
-//   addFollower,
-//   login
-// };
 
 module.exports = {
 	postSubmit,
