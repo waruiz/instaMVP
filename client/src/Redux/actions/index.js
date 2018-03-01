@@ -59,6 +59,13 @@ addSomeoneToFollow : () => {
         type: 'UPDATE_USER_POSTS',
         payload: posts
       }
+    ),
+
+    updateAddState: (image_url, caption) => (
+      {
+        type: "UPDATE_ADD_STATE",
+        payload: {image_url: image_url, caption: caption}
+      }
     )
   
 }
