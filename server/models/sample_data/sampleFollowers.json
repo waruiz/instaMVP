@@ -11,7 +11,7 @@
   },
   {
     "host_id": 2,
-    "follower_id": 1,
+    "follower_id": 3,
     "pending": true
   },
   {
@@ -37,6 +37,16 @@
   {
     "host_id": 4,
     "follower_id": 2,
+    "pending": false
+  },
+  {
+    "host_id": 5,
+    "follower_id": 2,
+    "pending": false
+  },
+  {
+    "host_id": 6,
+    "follower_id": 3,
     "pending": false
   }
 ]

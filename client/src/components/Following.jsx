@@ -23,7 +23,7 @@ class Followers extends React.Component {
 
   componentDidMount() {
     //should pull current user from state later on
-    axios.get('/following/Johnny')
+    axios.get('/following/thejhnny')
       .then((response) => {
         console.log('THIS IS THE RESPONSE ', response.data);
         console.log('this is our props ', this.props.updateFollowing);

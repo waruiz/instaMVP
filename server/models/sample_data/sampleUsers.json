@@ -1,30 +1,51 @@
 [
   {
-    "username": "Will",
-    "password": "Will123",
+    "username": "waruiz",
+    "password": "123",
     "name": "Will Ruiz",
     "gender": "M",
     "profile_pic": "Will.com"
   },
   {
-    "username": "Johnny",
-    "password": "Johnny123",
+    "username": "thejhnny",
+    "password": "123",
     "name": "Johnny Siu",
     "gender": "M",
     "profile_pic": "Johnny.com"
   },
   {
-    "username": "Michael",
-    "password": "Michael123",
+    "username": "michaelwachell",
+    "password": "123",
     "name": "Michael Wachell",
     "gender": "M",
     "profile_pic": "Michael.com"
   },
   {
-    "username": "Nelson",
-    "password": "Nelson123",
+    "username": "nelsonchen5",
+    "password": "123",
     "name": "Nelson Chen",
     "gender": "M",
     "profile_pic": "Nelson.com"
+  },
+  {
+    "username": "superman",
+    "password": "123",
+    "name": "Clark Kent",
+    "gender": "M",
+    "profile_pic": "superman.com"
+  },
+  {
+    "username": "batman",
+    "password": "123",
+    "name": "Bruce Wayne",
+    "gender": "M",
+    "profile_pic": "batman.com"
+  },
+  {
+    "username": "poop",
+    "password": "123",
+    "name": "Poop",
+    "gender": "M",
+    "profile_pic": "poop.com"
   }
 ]

@@ -7,23 +7,47 @@ var likes = require("./sample_data/sampleLikes.json");
 
 var insertSampleData = function() {
 	users.forEach(function(user){
-		db.Users.create(user);
+		db.Users.create(user)
+		.then(function(data){
+		})
+		.catch(function(error){
+			console.log(error)
+		})
 	});
 
 	submissions.forEach(function(submission){
-		db.Submissions.create(submission);
+		db.Submissions.create(submission)
+		.then(function(data){
+		})
+		.catch(function(error){
+			console.log(error)
+		})
 	});
 
 	comments.forEach(function(comment){
-		db.Comments.create(comment);
+		db.Comments.create(comment)
+		.then(function(data){
+		})
+		.catch(function(error){
+		})
 	});
 
 	followers.forEach(function(follower){
-		db.Followers.create(follower);
+		db.Followers.create(follower)
+		.then(function(data){
+		})
+		.catch(function(error){
+			console.log(error)
+		})
 	});
 
 	likes.forEach(function(like){
-		db.Likes.create(like);
+		db.Likes.create(like)
+		.then(function(data){
+		})
+		.catch(function(error){
+			console.log(error)
+		})
 	});
 };
 
