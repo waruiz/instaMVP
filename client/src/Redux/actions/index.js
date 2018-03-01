@@ -55,6 +55,11 @@ export default {
     payload: posts
   }),
 
+  updatePostComments: posts => ({
+    type: "UPDATE_POST_COMMENTS",
+    payload: comments
+  }),
+
   updateAddState: (image_url, caption) => ({
     type: "UPDATE_ADD_STATE",
     payload: { image_url: image_url, caption: caption }
@@ -68,7 +73,7 @@ export default {
     type: "UPDATE_FOLLOWING",
     payload: following
   }),
-  
+
   updateUserInfo: (about) => (
     {
       type: 'UPDATE_USER_INFO',
@@ -91,7 +96,5 @@ export default {
     }
   )
 
-  
-};
 
-  
+};

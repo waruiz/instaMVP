@@ -17,7 +17,7 @@ import NotFound from "./NotFound.jsx";
 import LandingPage from "./components/LandingPage.jsx";
 import Home from "./components/Home/Home.jsx";
 import Navbar from "./components/Home/Navbar.jsx";
-import CommentList from "./components/Home/CommentList.jsx";
+
 import User from "./components/User.jsx";
 import * as firebase from "firebase";
 
@@ -65,7 +65,7 @@ class App extends React.Component {
     const btnLogin = document.getElementById("btnLogin");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
-    
+
     auth
       .signInWithEmailAndPassword(email.value, password.value)
       .then( response => {
