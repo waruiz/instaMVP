@@ -83,6 +83,12 @@ export default {
         username
       }
     }
+  ),
+  updateCurrUser: (user) => (
+    {
+      type: 'UPDATE_CURR_USER',
+      payload: user
+    }
   )
 
   

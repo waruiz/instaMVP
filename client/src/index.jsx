@@ -19,6 +19,21 @@ import CommentList from "./components/Home/CommentList.jsx";
 import User from "./components/User.jsx";
 import * as firebase from "firebase";
 
+import { connect } from "react-redux";
+import actions from "./Redux/actions/index";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCurrUser: followers => dispatch(actions.updateCurrUser(followers))
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    currUser: state.currUser
+  };
+};
+
 var config = {
   apiKey: "AIzaSyBNcvgQ3DZNMCGvtUwsAH4roqoRcph1ZWw",
   authDomain: "instamvp-27932.firebaseapp.com",
@@ -29,12 +44,6 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
-const txtEmail = document.getElementById("email");
-const password = document.getElementById("password");
-const btnLogin = document.getElementById("btnLogin");
-const btnSignUp = document.getElementById("btnSignUp");
-const btnLogout = document.getElementById("btnLogout");
 
 const store = createStore(allReducers);
 
@@ -51,10 +60,13 @@ class App extends React.Component {
     const btnLogin = document.getElementById("btnLogin");
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
-    
+    var context = this;
     auth.signInWithEmailAndPassword(email.value, password.value)
-    .then(function(response){
-      console.log('RESPONSE: ' ,response)
+    .then((response) => {
+      console.log('RESPONSE EMAIL: ', response.email);
+      console.log('RIGHT HEREEE', this.props)
+      this.props.updateCurrUser(response.email);
+      console.log(context.props.currUser)
     })
     .catch(function(error){
       console.log('ERROR: ', error)
@@ -73,6 +85,7 @@ class App extends React.Component {
     auth.createUserWithEmailAndPassword(email.value, password.value)
     .then(function(response){
       console.log('RESPONSE: ' ,response)
+      
     })
     .catch(function(error){
       console.log('ERROR: ', error)
@@ -80,10 +93,11 @@ class App extends React.Component {
   }
 
 
-  
+
   render(props) {
     return (
       <div>
+        <h1>{this.props.currUser}</h1>
         <div id="login">
           <input type="email" id="email" placeholder="Email" />
           <input type="password" id="password" placeholder="Password" />
@@ -106,6 +120,10 @@ class App extends React.Component {
     );
   }
 }
+
+const AppPage = connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default AppPage;
 
 ReactDOM.render(
   <Provider store={store}>
