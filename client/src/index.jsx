@@ -12,6 +12,18 @@ import Home from './components/Home/Home.jsx';
 import Navbar from './components/Home/Navbar.jsx'
 import CommentList from './components/Home/CommentList.jsx'
 import User from './components/User.jsx';
+import * as firebase from 'firebase';
+
+var config = {
+  apiKey: "AIzaSyBNcvgQ3DZNMCGvtUwsAH4roqoRcph1ZWw",
+  authDomain: "instamvp-27932.firebaseapp.com",
+  databaseURL: "https://instamvp-27932.firebaseio.com",
+  projectId: "instamvp-27932",
+  storageBucket: "instamvp-27932.appspot.com",
+  messagingSenderId: "434695589661"
+};
+
+firebase.initializeApp(config);
 
 const store = createStore(allReducers);
 
