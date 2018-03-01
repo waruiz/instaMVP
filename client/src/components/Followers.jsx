@@ -21,7 +21,7 @@ class Followers extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  showFollowers() {
     //should pull current user from state later on
     axios.get('/followers/thejhnny')
       .then((response) => {
