@@ -67,5 +67,16 @@ export default {
   updateFollowing: following => ({
     type: "UPDATE_FOLLOWING",
     payload: following
-  })
+  }),
+  
+  updateUserInfo: (about) => (
+    {
+      type: 'UPDATE_USER_INFO',
+      payload: about
+    }
+  )
+  
 };
+    
+
+  
