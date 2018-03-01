@@ -33,14 +33,24 @@ class PostsContainer extends React.Component {
   render () {
     return (
       <div id="posts-container">
-        <h1 onClick={this.getUserPosts}>Posts</h1>
+        <h1 className="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" onClick={this.getUserPosts}>Posts</h1>
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
         {this.props.userPostsState.map((post, i) => {
-          return (
-          <div key ={i}>
-            {post.image_url}
-          </div>
-          )
-        })}
+              return (
+              <div key ={i}>
+                <img width="30%" src={post.image_url} />
+              </div>
+              )
+            })}
+      </div>
+    </div>
+  </div>
+
+
+
       </div>
     );
   }
