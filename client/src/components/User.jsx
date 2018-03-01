@@ -18,6 +18,8 @@ class User extends React.Component {
         <h1>User Page</h1>
         
         <PostsContainerPage />
+        <Following/>
+        <Followers/>
         <Route path="/home" component={Home} />
       </div>
     );
