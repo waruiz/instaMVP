@@ -3,7 +3,11 @@ const db = require("../../db/schema");
 const putLike = (req, res) => {
 	return db.Submissions.findById(req.body.data.id)
 	.then(submission => {
-		return submission.increment('like_count', {by: 1});
+		if (req.body.data.liked) {
+			return submission.decrement('like_count', {by: 1});
+		} else {
+			return submission.increment('like_count', {by: 1});
+		}
 	})
 }
 

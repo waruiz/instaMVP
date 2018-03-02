@@ -11,7 +11,7 @@ import axios from "axios";
 import LandingPage from '../LandingPage.jsx';
 import { browerHistory, Redirect } from "react-router";
 import Comment from '../Comment/Comment.jsx'
-import Likes from './Likes.jsx';
+import LikesContainer from './Likes.jsx';
 
 const mapDispatchToProps = dispatch => {
   return {
