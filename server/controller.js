@@ -5,6 +5,13 @@ const comment = require("./models/comment");
 const will = require("./models/willEndpoints");
 
 module.exports = {
+  putLike: (req, res) => {
+    will.putLike(req)
+      .then(result => {
+        res.send(result);
+      });
+  },
+
   getAllSubs: (req, res) => {
     nelson.getAllSubs().then(submissions => {
       res.send(submissions);

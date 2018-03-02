@@ -1,5 +1,76 @@
 const db = require("../../db/schema");
 
+const putLike = (req, res) => {
+	return db.Users.findOne({
+		attributes: ['id'],
+		where: {
+			username: req.body.data.username
+		}
+	})
+	.then(userId => {
+		return db.Likes.findOne({
+			where: {
+				user_id: userId.dataValues.id,
+				submission_id: req.body.data.postId
+			}
+		})
+		.then(result => {
+			if (result === null) {
+				return db.Submissions.findOne({
+					where: {
+						id: req.body.data.postId
+					}
+				})
+				.then(submission => {
+					return submission.increment('like_count', {by: 1});
+				})
+				// Create entry in Likes
+				.then(result => {
+					return db.Users.findOne({
+						attributes: ['id'],
+						where: {
+							username: req.body.data.username
+						}
+					})
+					.then(result => {
+						return db.Likes.create({
+							submission_id: req.body.data.postId,
+							user_id: result.dataValues.id
+						})
+					})
+				});
+			} else {
+				// decrement like on Submissions
+				return db.Submissions.findOne({
+					where: {
+						id: req.body.data.postId
+					}
+				})
+				.then(submission => {
+					return submission.decrement('like_count', {by: 1});
+				})
+				// destroy entry from Likes
+				.then(result => {
+					return db.Users.findOne({
+						attributes: ['id'],
+						where: {
+							username: req.body.data.username
+						}
+					})
+				})
+				.then(result => {
+					db.Likes.destroy({
+						where: {
+							user_id: result.dataValues.id,
+							submission_id: req.body.data.postId
+						}
+					});
+				})
+			}
+		})
+	})
+}
+
 const getUserSubs = (req, res) => {
   return db.Users.findAll({
     where: {
@@ -32,7 +103,7 @@ const postSubmit = (req, res) => {
       caption: req.body.caption,
       user_id: data.dataValues.id
     });
-  });
+	});
 };
 
 const requestFollower = (req, res) => {
@@ -107,9 +178,10 @@ const addFollower = (req, res) => {
 };
 
 module.exports = {
-  postSubmit,
-  getPendingFollowers,
-  addFollower,
-  requestFollower,
-  getUserSubs
+	postSubmit,
+	getPendingFollowers,
+	addFollower,
+	requestFollower,
+	getUserSubs,
+	putLike
 };

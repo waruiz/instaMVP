@@ -100,6 +100,13 @@ export default {
       type: 'UPDATE_CURR_USER_LOCAL',
       payload: user
     }
+  ),
+  
+  updateAddLikeState: (likes) => (
+    {
+      type: 'UPDATE_ADD_LIKE_STATE',
+      payload: likes
+    }
   )
 
 

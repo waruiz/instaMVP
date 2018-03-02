@@ -9,6 +9,7 @@ import userInfoState from './userInfoState';
 import addRequestState from './addRequestState';
 import currUser from './reducer-login';
 import postCommentState from './reducer-postComments';
+import addLikeState from './addLikeState';
 
 const allReducers = combineReducers({
   timelineState,
@@ -19,7 +20,8 @@ const allReducers = combineReducers({
   // userInfoState,
   addRequestState,
   currUser,
-  postCommentState
+  postCommentState,
+  addLikeState
 });
 
 export default allReducers;

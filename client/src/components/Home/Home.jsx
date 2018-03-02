@@ -11,6 +11,7 @@ import axios from "axios";
 import LandingPage from '../LandingPage.jsx';
 import { browerHistory, Redirect } from "react-router";
 import Comment from '../Comment/Comment.jsx'
+import LikesContainer from './Likes.jsx';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -71,6 +72,7 @@ class Home extends React.Component {
             return (
               <div key={i}>
                 <img width="40%" src={item.image_url} alt="" />
+                <LikesContainer postID={item.id} />
                 <p>{item.caption}</p>
                 <Comment postID={item.id} />
               </div>

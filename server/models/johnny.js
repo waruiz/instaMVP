@@ -7,8 +7,18 @@ var createUser = function(req) {
 };
 
 var getLikes = function(req) {
-	return db.Likes.find({
-		where: req.params
+	return db.Likes.findOne({
+		where: {
+			submission_id: req.params.sub
+		}
+	})
+	.then(submission => {
+		return db.Submissions.findOne({
+			attributes: ['like_count'],
+			where: {
+				id: submission.dataValues.submission_id
+			}
+		})
 	});
 };
 
@@ -140,87 +150,6 @@ var getSubsByFollowing = function(req){
 	})
 })
 }
-
-// var getSubsByFollowing = function(req){
-
-// 	db.Users.findAll({
-// 			attributes: ['id', 'username', 'name'],
-// 			where: {
-// 					username: req.params.user
-// 			},
-// 			include: [ {
-// 					model: db.Followers,
-// 					attributes: ['host_id', 'follower_id'],
-// 					where: {
-// 							follower_id: 4
-// 					}
-// 			} ]
-// 	}).then(result => {
-// 			console.log('I AM FOLLOWINGGGGGGGGG: ', result);
-// 			// db.Followers.findAll({
-// 			//     where: {
-// 			//         follower_id: result[0].dataValues.id
-// 			//     }
-// 			// })
-// 	});
-
-	// return db.Users.findAll({
-	//     where: {
-	//         username: req.params.user
-	//     }
-	// }).then( result => {
-	//     // console.log(result);
-	//     return db.Followers.findAll({
-	//         where: {
-	//             follower_id: result[0].dataValues.id
-	//         }
-	//     }).then(results => {
-	//         var list = [];
-	//         results.forEach(element => {
-	//             list.push(element.dataValues.host_id)
-	//         })
-	//         return db.Submissions.findAll({
-	//             where: {
-	//                 user_id: {
-	//                     [Op.or]: list
-	//                 }
-	//             }
-	//         }).then(results => {
-	//             var list = results.map( (element) => {
-	//                 return element.dataValues;
-	//             })
-	//             // console.log(list);
-	//             return list;
-	//         })
-	//         .then(list => {
-	//             return list.map(element => {
-	//                 // if ( !(element.hasOwnProperty('username')) ) {
-	//                     return db.Users.findOne({
-	//                         where: {
-	//                             id: element.user_id
-	//                         }
-	//                     })
-	//                     .then(result => {
-	//                         element.username = result.dataValues.username;
-	//                         // console.log(element);
-	//                         return element;
-	//                     })
-	//                     .then(result => {
-	//                         console.log(result);
-	//                         return result;
-	//                     })
-											
-	//                 // }
-	//             });
-	//             // console.log(some);
-	//             // return some;
-	//         })
-	//     })
-	// })
-
-
-
-
 
 module.exports = {
 	createUser,
