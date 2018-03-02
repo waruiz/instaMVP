@@ -24,16 +24,19 @@ import * as firebase from "firebase";
 import { connect } from "react-redux";
 import actions from "./Redux/actions/index";
 import { browerHistory, Redirect } from "react-router";
+import axios from 'axios'
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateCurrUser: user => dispatch(actions.updateCurrUser(user))
+    updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
+
   };
 };
 
 const mapStateToProps = state => {
   return {
-    currUser: state.currUser
+    currUser: state.currUser,
+
   };
 };
 
@@ -88,8 +91,12 @@ class App extends React.Component {
 
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
-      .then(function(response) {
+      .then(response => {
         console.log("RESPONSE: ", response);
+        axios.post('/info', {username: response.email, password: password.value, name: response.email}).then(response => {
+          console.log('successfully added user to local database')
+          
+        })
       })
       .catch(function(error) {
         console.log("ERROR: ", error);
@@ -119,14 +126,14 @@ class App extends React.Component {
           </button>
           <button
             id="btnSignUp"
-            onClick={this.signUp}
+            onClick={() => this.signUp()}
             className="btn btn-secondary"
           >
             Sign Up
           </button>
           <button
             id="btnLogout"
-            onClick={this.logout}
+            onClick={() => this.logout()}
             className="btn btn-action hide"
           >
             Log out

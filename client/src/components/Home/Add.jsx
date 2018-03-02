@@ -7,13 +7,16 @@ import actions from "../../Redux/actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateAddState: (image_url, caption) => dispatch(actions.updateAddState(image_url, caption))
+    updateAddState: (image_url, caption) => dispatch(actions.updateAddState(image_url, caption)),
+    updateTimeline: submissions => dispatch(actions.updateTimeline(submissions))
   };
 };
 
 const mapStateToProps = state => {
   return {
-    addState: state.addState
+    addState: state.addState,
+    timelineState: state.timelineState,
+    currUser: state.currUser,
   };
 };
 class Add extends React.Component {
@@ -27,12 +30,16 @@ class Add extends React.Component {
   postSubmission() {
     axios
       .post("/submit", {
-        username: "nelsonchen5",
+        username: this.props.currUser,
         image_url: this.props.addState.image_url,
         caption: this.props.addState.caption,
       })
       .then(response => {
         console.log("this is the response", response);
+        axios.get(`/subs/${this.props.currUser}`).then(response => {
+          console.log('getsuccess')
+          this.props.updateTimeline(response.data)
+        })
       })
       .catch(error => {
         console.log("this is our error", error);

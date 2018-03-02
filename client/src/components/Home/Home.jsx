@@ -32,8 +32,9 @@ class Home extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/subs")
+      .get(`/subs/following/${this.props.currUser}`)
       .then(response => {
+        
         this.props.updateTimeline(response.data);
       })
       .catch(error => {

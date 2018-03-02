@@ -11,7 +11,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    addRequestState: state.addRequestState
+    addRequestState: state.addRequestState,
+    currUser: state.currUser,
   }
 };
 
@@ -27,7 +28,7 @@ class Requests extends React.Component {
   postRequest () {
     axios
       .post('/requestfollower', {
-        host: `Will`,
+        host: this.props.currUser,
         username: this.props.addRequestState.username
       })
       .then(result => {
@@ -42,7 +43,7 @@ class Requests extends React.Component {
       <div>
         <form>
         <input type="text" name="username" placeholder="Username" autoComplete="off" onChange={this.onUsernameChange} />
-        <input type="submit" value="Follow" onClick={() =>{this.postRequest()}} />
+        <input type="button" value="Follow" onClick={() =>{this.postRequest()}} />
         </form>
       </div>
     );
