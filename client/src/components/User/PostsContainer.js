@@ -19,6 +19,12 @@ class PostsContainer extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+
+
+    }
+
     this.getUserPosts = this.getUserPosts.bind(this);
   }
 
@@ -44,10 +50,10 @@ class PostsContainer extends React.Component {
               })
             }
 
+          </div>
         </div>
-      </div>
 
-    </div>
+      </div>
     </div>);
   }
 }
