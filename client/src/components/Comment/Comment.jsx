@@ -26,21 +26,26 @@ class Comment extends React.Component {
       submission: 1
     }
     this.addComment = this.addComment.bind(this);
+    this.renderComments = this.renderComments.bind(this)
   }
 
   addComment(props) {
     var content = $(`.${this.props.postID}`).val();
+    var theUser = 1;
+    // if (this.props.currUser) {
+    //   theUser = this.props.currUser;
+    // }
     console.log(this.props.postID, 'inside my post dog')
     axios
       .post("/comment", {
-        user_id: 1,
+        user_id: theUser,
         submission_id: this.props.postID,
         content: content,
       })
       .then(response => {
         $(`.${this.props.postID}`).val('')
         console.log("this is the response", response);
-        this.props.updatePostComments(0)
+        this.props.updatePostComments(response.data)
       })
       .catch(error => {
         console.log("this is our error", error);
@@ -48,6 +53,10 @@ class Comment extends React.Component {
   }
 
   componentDidMount(props) {
+    this.renderComments();
+  }
+
+  renderComments(props) {
     console.log(`This POST ID IS ${this.props.postID}`)
     axios.get(`/comments/${this.props.postID}`).then(result => {
       this.props.updatePostComments(result.data);
