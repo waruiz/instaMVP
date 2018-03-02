@@ -38,11 +38,13 @@ class Comment extends React.Component {
         content: content,
       })
       .then(response => {
+        $(`.${this.props.postID}`).val('')
         console.log("this is the response", response);
+        this.props.updatePostComments(0)
       })
       .catch(error => {
         console.log("this is our error", error);
-      });
+      }).then(axios.get(`/comments/${this.props.postID}`))
   }
 
   componentDidMount(props) {
