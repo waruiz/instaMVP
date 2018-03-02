@@ -22,7 +22,6 @@ class Followers extends React.Component {
 
   getFollowing() {
     //should pull current user from state later on
-<<<<<<< HEAD
     axios.get('/following/thejhnny').then((response) => {
       console.log('THIS IS THE RESPONSE ', response.data);
       console.log('this is our props ', this.props.updateFollowing);
@@ -31,18 +30,6 @@ class Followers extends React.Component {
     }).catch((error) => {
       console.log('ERROR IS: ', error);
     })
-=======
-    axios.get('/following/nelsonchen5')
-      .then((response) => {
-        console.log('THIS IS THE RESPONSE ', response.data);
-        console.log('this is our props ', this.props.updateFollowing);
-        this.props.updateFollowing(response.data);
-        console.log(this.props)
-      })
-      .catch((error) => {
-        console.log('ERROR IS: ', error);
-      })
->>>>>>> refactored add to refresh
   }
 
   render() {
