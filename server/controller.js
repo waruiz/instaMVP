@@ -24,6 +24,7 @@ module.exports = {
   },
 
   getFollowers: (req, res) => {
+    console.log('gets here')
     johnny.getFollowers(req).then(followers => {
       res.send(followers);
     });

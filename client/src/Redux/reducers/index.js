@@ -15,7 +15,7 @@ const allReducers = combineReducers({
   addState,
   followersState,
   followingState,
-  userInfoState,
+  // userInfoState,
   addRequestState,
   currUser
 });
