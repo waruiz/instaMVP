@@ -55,7 +55,7 @@ export default {
     payload: posts
   }),
 
-  updatePostComments: posts => ({
+  updatePostComments: comments => ({
     type: "UPDATE_POST_COMMENTS",
     payload: comments
   }),

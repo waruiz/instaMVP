@@ -10,6 +10,7 @@ import actions from "../../Redux/actions/index";
 import axios from "axios";
 import LandingPage from '../LandingPage.jsx';
 import { browerHistory, Redirect } from "react-router";
+import Comment from '../Comment/Comment.jsx'
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -63,13 +64,14 @@ class Home extends React.Component {
           </ul>
         </nav>
 
-        <div id="timeline">
+        <div id="timeline" align="center">
           <h1>My Timeline</h1>
           {this.props.timelineState.map((item, i) => {
             return (
-              <div align="center" key={i}>
+              <div key={i}>
                 <img width="40%" src={item.image_url} alt="" />
                 <p>{item.caption}</p>
+                <Comment postID={item.id} />
               </div>
             );
           })}
