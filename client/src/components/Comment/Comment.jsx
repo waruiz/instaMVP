@@ -3,6 +3,7 @@ import {Route, Link} from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux'
 import actions from "../../Redux/actions/index";
+import $ from 'jquery'
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -11,41 +12,66 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  return {postCommentState: state.postCommentState,
-          timelineState: state.timelineState                                      }
+  return {postCommentState: state.postCommentState, timelineState: state.timelineState}
 };
 
 class Comment extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+
+
+    this.state = {
+      comment: "so sweet dude",
+      submission: 1
+    }
+    this.addComment = this.addComment.bind(this);
   }
 
-  handleClick(i, event) {
-    console.log(i);
+  addComment(props) {
+    var content = $(`.${this.props.postID}`).val();
+    console.log(this.props.postID, 'inside my post dog')
+    axios
+      .post("/comment", {
+        user_id: 1,
+        submission_id: this.props.postID,
+        content: content,
+      })
+      .then(response => {
+        console.log("this is the response", response);
+      })
+      .catch(error => {
+        console.log("this is our error", error);
+      });
   }
 
-  renderComments(props) {
+  componentDidMount(props) {
     console.log(`This POST ID IS ${this.props.postID}`)
-    axios.get(`/comments/${this.props.postID}`)
-    .then(result => {
+    axios.get(`/comments/${this.props.postID}`).then(result => {
       this.props.updatePostComments(result.data);
       console.log(this.props, "here be my COMMMENT Props");
     })
   }
 
+
+
+
+
   render() {
     return (<div align="center">
       <div align="center">
-      {this.props.postID}
+        {this.props.postID}
 
         <table>
           <tbody>
             <tr>
               <td>
                 {
-                  this.props.postCommentState.map((comment, i) => {
+                  this.props.postCommentState.filter((comment, i) => {
+                    if (comment.submission_id === this.props.postID) {
+                      return comment;
+                    }
+                  }).map((comment, i) => {
                     return (<div align="left" key={i}>
                       <span className="commentBody">
 
@@ -68,12 +94,10 @@ class Comment extends React.Component {
                   })
                 }
                 <form align="center" className="form-inline sub-comments" role="form">
-                  <div class="form-group">
-                    <input className="form-control" type="text" placeholder="Your comments"/>
-                  </div>
-                  <div className="form-group">
-                    <button className="btn btn-default">Add</button>
-                  </div>
+
+                  <input type = 'textbox' className={this.props.postID} placeholder = 'add comment' />
+
+                  <input type = 'button' value = 'ADD COMMENT' onClick = {()=>{this.addComment()}}/>
                 </form>
 
               </td>
@@ -82,8 +106,6 @@ class Comment extends React.Component {
         </table>
 
       </div>
-
-
 
     </div>)
   }
