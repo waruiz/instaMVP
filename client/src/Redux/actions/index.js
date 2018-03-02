@@ -94,6 +94,12 @@ export default {
       type: 'UPDATE_CURR_USER',
       payload: user
     }
+  ),
+  updateCurrUserLocal: (user) => (
+    {
+      type: 'UPDATE_CURR_USER_LOCAL',
+      payload: user
+    }
   )
 
 

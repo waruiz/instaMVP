@@ -32,7 +32,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/subs")
+      .get(`/subs/${this.currUser}`)
       .then(response => {
         this.props.updateTimeline(response.data);
       })

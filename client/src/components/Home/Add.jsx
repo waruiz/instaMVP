@@ -15,7 +15,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     addState: state.addState,
-    timelineState: state.timelineState
+    timelineState: state.timelineState,
+    currUser: state.currUser,
   };
 };
 class Add extends React.Component {
@@ -29,13 +30,13 @@ class Add extends React.Component {
   postSubmission() {
     axios
       .post("/submit", {
-        username: "nelsonchen5",
+        username: this.props.currUser,
         image_url: this.props.addState.image_url,
         caption: this.props.addState.caption,
       })
       .then(response => {
         console.log("this is the response", response);
-        axios.get('/subs').then(response => {
+        axios.get(`/subs/${this.props.currUser}`).then(response => {
           console.log('getsuccess')
           this.props.updateTimeline(response.data)
         })

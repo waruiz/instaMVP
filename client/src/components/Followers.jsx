@@ -6,12 +6,15 @@ import actions from "../Redux/actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateFollowers: followers => dispatch(actions.updateFollowers(followers))
+    updateFollowers: followers => dispatch(actions.updateFollowers(followers)),
+    updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
   };
 };
 
 const mapStateToProps = state => {
-  return {followersState: state.followersState};
+  return {followersState: state.followersState,
+  currUser: state.currUser,
+  }
 };
 
 class Followers extends React.Component {
@@ -22,7 +25,7 @@ class Followers extends React.Component {
 
   showFollowers() {
     //should pull current user from state later on
-    axios.get('/followers/thejhnny').then((response) => {
+    axios.get(`/followers/${this.props.currUser}`).then((response) => {
       console.log('THIS IS THE RESPONSE ', response.data);
       console.log('this is our props ', this.props.updateFollowers);
       this.props.updateFollowers(response.data);
