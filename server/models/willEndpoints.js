@@ -1,5 +1,12 @@
 const db = require("../../db/schema");
 
+const putLike = (req, res) => {
+	return db.Submissions.findById(req.body.data.id)
+	.then(submission => {
+		return submission.increment('like_count', {by: 1});
+	})
+}
+
 const getUserSubs = (req, res) => {
   return db.Users.findAll({
     where: {
@@ -114,9 +121,10 @@ const addFollower = (req, res) => {
 };
 
 module.exports = {
-  postSubmit,
-  getPendingFollowers,
-  addFollower,
-  requestFollower,
-  getUserSubs
+	postSubmit,
+	getPendingFollowers,
+	addFollower,
+	requestFollower,
+	getUserSubs,
+	putLike
 };
