@@ -5,7 +5,7 @@ import actions from '../../Redux/actions/';
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateAddLikeState: (liked) => dispatch(actions.updateAddLikeState(liked))
+    updateAddLikeState: (liked, likes) => dispatch(actions.updateAddLikeState(liked, likes))
   }
 }
 
@@ -22,7 +22,7 @@ class Likes extends React.Component {
   handleLikeClick () {
     axios.put('/like', {
       data: {
-        id: 5,
+        id: this.props.postID,
         liked: this.props.addLikeState.liked
       }
     })
@@ -32,8 +32,9 @@ class Likes extends React.Component {
       });
   }
   componentDidMount () {
-    axios.get('/likes/5')
+    axios.get(`/likes/${this.props.postID}`)
     .then(result => {
+        console.log('CURRENT LIKES: ', this.props.addLikeState);
         this.props.addLikeState.likes = result.data.like_count;
       })
       .catch(err => {
@@ -43,7 +44,7 @@ class Likes extends React.Component {
   render () {
     return (
       <div id="likes" onClick={() => {this.handleLikeClick()}}>
-        Likes: {this.state.likes}
+        Likes: {this.props.addLikeState.likes}
       </div>
     );
   }

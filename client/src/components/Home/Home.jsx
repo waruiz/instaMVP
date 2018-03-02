@@ -72,7 +72,7 @@ class Home extends React.Component {
             return (
               <div key={i}>
                 <img width="40%" src={item.image_url} alt="" />
-                <Likes />
+                <LikesContainer postID={item.id} />
                 <p>{item.caption}</p>
                 <Comment postID={item.id} />
               </div>
