@@ -1,13 +1,73 @@
 const db = require("../../db/schema");
 
 const putLike = (req, res) => {
-	return db.Submissions.findById(req.body.data.id)
-	.then(submission => {
-		if (req.body.data.liked) {
-			return submission.decrement('like_count', {by: 1});
-		} else {
-			return submission.increment('like_count', {by: 1});
+	return db.Users.findOne({
+		attributes: ['id'],
+		where: {
+			username: req.body.data.username
 		}
+	})
+	.then(userId => {
+		return db.Likes.findOne({
+			where: {
+				user_id: userId.dataValues.id,
+				submission_id: req.body.data.postId
+			}
+		})
+		.then(result => {
+			if (result === null) {
+				return db.Submissions.findOne({
+					where: {
+						id: req.body.data.postId
+					}
+				})
+				.then(submission => {
+					return submission.increment('like_count', {by: 1});
+				})
+				// Create entry in Likes
+				.then(result => {
+					return db.Users.findOne({
+						attributes: ['id'],
+						where: {
+							username: req.body.data.username
+						}
+					})
+					.then(result => {
+						return db.Likes.create({
+							submission_id: req.body.data.postId,
+							user_id: result.dataValues.id
+						})
+					})
+				});
+			} else {
+				// decrement like on Submissions
+				return db.Submissions.findOne({
+					where: {
+						id: req.body.data.postId
+					}
+				})
+				.then(submission => {
+					return submission.decrement('like_count', {by: 1});
+				})
+				// destroy entry from Likes
+				.then(result => {
+					return db.Users.findOne({
+						attributes: ['id'],
+						where: {
+							username: req.body.data.username
+						}
+					})
+				})
+				.then(result => {
+					db.Likes.destroy({
+						where: {
+							user_id: result.dataValues.id,
+							submission_id: req.body.data.postId
+						}
+					});
+				})
+			}
+		})
 	})
 }
 
@@ -43,13 +103,6 @@ const postSubmit = (req, res) => {
       caption: req.body.caption,
       user_id: data.dataValues.id
     });
-	})
-	.then(result => {
-		db.Likes.create({
-			submission_id: result.dataValues.id,
-			user_id: result.dataValues.user_id
-		})
-		return result;
 	});
 };
 
