@@ -7,21 +7,12 @@ var createUser = function(req) {
 };
 
 var getLikes = function(req) {
-    return db.Submissions.findOne({
-        attributes: ['like_count'],
-        where: {
-            id: req.params.sub
-        }
-    })
-
-	.then(submission => {
-		return db.Submissions.findOne({
-			attributes: ['like_count'],
-			where: {
-				id: submission.dataValues.submission_id
-			}
-		})
-	});
+	return db.Submissions.findOne({
+		attributes: ['like_count'],
+		where: {
+			id: req.params.sub
+		}
+	})
 };
 
 var getUserInfo = function(req) {
