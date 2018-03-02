@@ -35,7 +35,7 @@ class Followers extends React.Component {
   render() {
     return (<div>
 
-      <button className="btn btn-primary" data-toggle="modal" data-target=".followers-list" onClick={this.showFollowers}>Followers</button>
+      <button className="btn btn-primary" data-toggle="modal" data-target=".followers-list" onClick={() => this.showFollowers()}>Followers</button>
 
       <div className="modal fade followers-list" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-sm">
