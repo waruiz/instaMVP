@@ -102,13 +102,10 @@ export default {
     }
   ),
   
-  updateAddLikeState: (liked, likes) => (
+  updateAddLikeState: (likes) => (
     {
       type: 'UPDATE_ADD_LIKE_STATE',
-      payload: {
-        liked,
-        likes
-      }
+      payload: likes
     }
   )
 
