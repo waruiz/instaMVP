@@ -43,7 +43,7 @@ class Requests extends React.Component {
       <div>
         <form>
         <input type="text" name="username" placeholder="Username" autoComplete="off" onChange={this.onUsernameChange} />
-        <input type="submit" value="Follow" onClick={() =>{this.postRequest()}} />
+        <input type="button" value="Follow" onClick={() =>{this.postRequest()}} />
         </form>
       </div>
     );

@@ -85,7 +85,7 @@ export default {
     {
       type: 'UPDATE_ADD_REQUEST_STATE',
       payload: {
-        username
+        username : username
       }
     }
   ),
