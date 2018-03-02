@@ -32,7 +32,14 @@ const postSubmit = (req, res) => {
       caption: req.body.caption,
       user_id: data.dataValues.id
     });
-  });
+	})
+	.then(result => {
+		db.Likes.create({
+			submission_id: result.dataValues.id,
+			user_id: result.dataValues.user_id
+		})
+		return result;
+	});
 };
 
 const requestFollower = (req, res) => {
