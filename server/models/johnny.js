@@ -34,7 +34,7 @@ var getFollowers = function(req) {
 		}).then(results => {
 			var list = [];
 			results.forEach(element => {
-				list.push(element.dataValues.id);
+				list.push(element.dataValues.follower_id);
 			});
 			if(list.length === 0){
 				return [];
