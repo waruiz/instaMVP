@@ -59,17 +59,17 @@ export default {
     }
   ),
 
-  updateCurrUserLocal: (user) => (
-    {
-      type: 'UPDATE_CURR_USER_LOCAL',
-      payload: user
-    }
-  ),
-  
   updateAddLikeState: (likes) => (
     {
       type: 'UPDATE_ADD_LIKE_STATE',
       payload: likes
+    }
+  ),
+
+  updateCurrUserInfo: userInfo => (
+    {
+      type: 'UPDATE_CURR_USER_INFO',
+      payload: userInfo
     }
   )
 

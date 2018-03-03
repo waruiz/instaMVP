@@ -145,5 +145,11 @@ module.exports = {
     nelson.deleteUser(req).then(result => {
       res.send("delete User Success");
     });
+  },
+
+  getUser: (req, res) => {
+    johnny.getUser(req).then(result => {
+      res.send(result);
+    })
   }
 };

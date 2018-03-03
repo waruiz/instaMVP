@@ -34,7 +34,7 @@ var getFollowers = function(req) {
 		}).then(results => {
 			var list = [];
 			results.forEach(element => {
-				list.push(element.dataValues.id);
+				list.push(element.dataValues.follower_id);
 			});
 			if(list.length === 0){
 				return [];
@@ -135,7 +135,7 @@ var getSubsByFollowing = function(req){
 			})
 			.then(submissions => {
 				let sub = [];
-				var list = submissions.map(submission=>{
+				submissions.map(submission=>{
 					sub.push(db.Users.findOne({
 						where: {
 							id: submission.user_id
@@ -150,6 +150,14 @@ var getSubsByFollowing = function(req){
 		})
 	})
 })
+};
+
+var getUser = function(req) {
+	return db.Users.findOne({
+		where: {
+			username: req.params.username
+		}
+	})
 }
 
 module.exports = {
@@ -160,5 +168,6 @@ module.exports = {
 	getFollowing,
 	getSubsByFollowing,
 	deleteFollower,
-	deleteFollowing
+	deleteFollowing,
+	getUser
 };
