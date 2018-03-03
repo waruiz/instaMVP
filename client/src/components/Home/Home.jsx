@@ -15,7 +15,8 @@ import LikesContainer from './Likes.jsx';
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateTimeline: submissions => dispatch(actions.updateTimeline(submissions))
+    updateTimeline: submissions => dispatch(actions.updateTimeline(submissions)),
+    updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
   };
 };
 
