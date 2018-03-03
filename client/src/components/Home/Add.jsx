@@ -56,7 +56,7 @@ class Add extends React.Component {
 
   <div>
     <input type = 'form' placeholder = 'insert caption' onChange = {this.onCaptionChange}/>
-    <input type = 'form' placeholder = 'image url' onChange = {this.onImageUrlChange}/>
+    {/* <input type = 'form' placeholder = 'image url' onChange = {this.onImageUrlChange}/> */}
     <input type = 'submit' value = 'ADD POST' onClick = {()=>{this.postSubmission()}}/>
 
   </div>
