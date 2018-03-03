@@ -118,6 +118,9 @@ var getSubsByFollowing = function(req){
 			results.forEach(element => {
 				list.push(element.dataValues.host_id)
 			})
+			if(list.length === 0){
+				return [];
+			}
 			return db.Submissions.findAll({
 				where: {
 					user_id: {
