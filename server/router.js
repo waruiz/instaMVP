@@ -11,7 +11,6 @@ router.get('/pending/:user', controller.getPendingFollowers);
 router.get('/info/:username', controller.getUserInfo);
 router.get('/subs/following/:user',controller.getSubsByFollowing);
 
-// router.post('/login', controller.login);
 router.post('/info', controller.postInfo);
 router.post('/submit', controller.submit);
 router.post('/comment', controller.comment);
