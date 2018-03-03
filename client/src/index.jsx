@@ -61,6 +61,7 @@ class App extends React.Component {
     auth
       .signInWithEmailAndPassword(email.value, password.value)
       .then( response => {
+        console.log('RESPONSE FROM LOGIN HERE: ', response)
         this.props.updateCurrUser(response.email);
       })
       .catch(function(error) {

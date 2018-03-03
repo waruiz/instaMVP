@@ -145,5 +145,9 @@ module.exports = {
     nelson.deleteUser(req).then(result => {
       res.send("delete User Success");
     });
+  },
+
+  getUser: (req, res) => {
+    res.send('getting user')
   }
 };
