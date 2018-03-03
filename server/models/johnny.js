@@ -7,11 +7,13 @@ var createUser = function(req) {
 };
 
 var getLikes = function(req) {
-	return db.Likes.findOne({
-		where: {
-			submission_id: req.params.sub
-		}
-	})
+    return db.Submissions.findOne({
+        attributes: ['like_count'],
+        where: {
+            id: req.params.sub
+        }
+    })
+
 	.then(submission => {
 		return db.Submissions.findOne({
 			attributes: ['like_count'],
@@ -132,7 +134,7 @@ var getSubsByFollowing = function(req){
 				console.log(list)
 				return list;
 			})
-			.then(submissions => { 
+			.then(submissions => {
 				let sub = [];
 				var list = submissions.map(submission=>{
 					sub.push(db.Users.findOne({

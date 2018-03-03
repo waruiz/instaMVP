@@ -56,6 +56,10 @@ class Comment extends React.Component {
     this.renderComments();
   }
 
+  componentWillUnmount() {
+    this.props.updatePostComments("initialize");  
+  }
+
   renderComments(props) {
     console.log(`This POST ID IS ${this.props.postID}`)
     axios.get(`/comments/${this.props.postID}`).then(result => {
