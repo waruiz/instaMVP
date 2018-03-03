@@ -11,6 +11,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    currUser: state.currUser,
     addLikeState: state.addLikeState
   }
 }
@@ -20,9 +21,10 @@ class Likes extends React.Component {
     this.handleLikeClick = this.handleLikeClick.bind(this);
   }
   handleLikeClick () {
+    console.log('CURRENT USER IS: ', this.props);
     axios.put('/like', {
       data: {
-        username: 'superman',
+        username: `${this.props.currUser}`,
         postId: this.props.postID
       }
     })
@@ -31,7 +33,7 @@ class Likes extends React.Component {
     axios.get(`/likes/${this.props.postID}`)
     .then(result => {
       this.props.updateAddLikeState(result.data.like_count);
-      // console.log('CURRENT LIKES: ', this.props.addLikeState);
+      console.log('CURRENT LIKES: ', this.props.addLikeState);
       })
       .catch(err => {
         console.log('Error during GET Likes: ', err);
