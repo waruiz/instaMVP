@@ -123,7 +123,7 @@ class Home extends React.Component {
           {this.props.timelineState.map((item, i) => {
             return (
               <div key={i}>
-                <h3>{item.username}</h3>
+                <h3>{item.username.split('@')[0]}</h3>
                 <img width="40%" src={item.image_url} className = {this.state.filter} onClick = {() =>this.filterRandom()}/>
                 <LikesContainer postID={item.id} />
                 <p>{item.caption}</p>
