@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +19,9 @@ import { browerHistory, Redirect } from "react-router";
 import Comment from "../Comment/Comment.jsx";
 import LikesContainer from "./Likes.jsx";
 import ReactFilestack, { client } from "filestack-react";
+// import './cssgram.css';
+
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -37,15 +41,48 @@ const mapStateToProps = state => {
   };
 };
 
+const filters = [
+  "_1977",
+  "aden",
+  "brannan",
+  "brooklyn",
+  "clarendon",
+  "earlybird",
+  "gingham",
+  "hudson",
+  "inkwell",
+  "kelvin",
+  "lark",
+  "lofi",
+  "maven",
+  "mayfair",
+  "moon",
+  "nashville",
+  "perpetua",
+  "reyes",
+  "rise",
+  "slumber",
+  "stinson",
+  "toaster",
+  "valencia",
+  "walden",
+  "willow",
+  "xpro2"
+];
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-
-
+    this.state ={
+      filter: ''
+    }
+    this.filterRandom = this.filterRandom.bind(this)
   }
-
-
+  filterRandom() {
+    this.setState({
+      filter: filters[(Math.floor(Math.random()*filters.length))]
+    })
+  }
 
   componentDidMount() {
     axios
@@ -87,7 +124,7 @@ class Home extends React.Component {
             return (
               <div key={i}>
                 <h3>{item.username}</h3>
-                <img width="40%" src={item.image_url} alt="" />
+                <img width="40%" src={item.image_url} className = {this.state.filter} onClick = {() =>this.filterRandom()}/>
                 <LikesContainer postID={item.id} />
                 <p>{item.caption}</p>
                 <Comment postID={item.id} />
@@ -100,9 +137,8 @@ class Home extends React.Component {
         <Route path="/user" component={User} />
         <Route path="/submit" component={Submit} />
         <Route path="/add" component={AddContainer} />
-        
+
         <Route path="/requests" component={Requests} />
-        
       </div>
     );
   }

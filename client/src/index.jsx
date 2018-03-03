@@ -25,6 +25,7 @@ import actions from "./Redux/actions/index";
 import { browerHistory, Redirect } from "react-router";
 import axios from 'axios'
 import config from '../../config.js';
+// import './components/home/cssgram.css';
 
 const mapDispatchToProps = dispatch => {
   return {
