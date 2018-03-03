@@ -135,7 +135,7 @@ var getSubsByFollowing = function(req){
 			})
 			.then(submissions => {
 				let sub = [];
-				var list = submissions.map(submission=>{
+				submissions.map(submission=>{
 					sub.push(db.Users.findOne({
 						where: {
 							id: submission.user_id

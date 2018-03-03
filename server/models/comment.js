@@ -8,13 +8,30 @@ module.exports = {
 	},
 
 	getSubComments: (req, res) => {
-		let comments = db.Comments.findAll({
+		return db.Comments.findAll({
 			where: {
 				submission_id: req.params.sub
 			},
-		});
-
-		return comments;
+		}).then(results =>{
+			return results.map( (element) => {
+				return element.dataValues;
+			})
+		})
+		.then(comments => {
+			var list = []
+			comments.forEach( comment => {
+				list.push(db.Users.findOne({
+					where: {
+						id: comment.user_id
+					}
+				}).then(result => {
+					comment.username = result.username;
+					console.log(comment);
+					return comment;
+				}))
+			})
+			return Promise.all(list).then( values => values);
+		})
 	},
 
 	updateComment: (req, res) => {
