@@ -36,6 +36,9 @@ var getFollowers = function(req) {
 			results.forEach(element => {
 				list.push(element.dataValues.id);
 			});
+			if(list.length === 0){
+				return [];
+			}
 			return db.Users.findAll({
 				where: {
 					id: {
@@ -68,6 +71,9 @@ var getFollowing = function(req) {
 			results.forEach(element => {
 				list.push(element.dataValues.host_id);
 			});
+			if(list.length === 0){
+				return [];
+			}
 			return db.Users.findAll({
 				where: {
 					id: {
@@ -122,7 +128,6 @@ var getSubsByFollowing = function(req){
 				var list = results.map( (element) => {
 					return element.dataValues;
 				})
-				console.log(list)
 				return list;
 			})
 			.then(submissions => {
