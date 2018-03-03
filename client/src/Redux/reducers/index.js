@@ -85,6 +85,10 @@ const allReducers = combineReducers({
   },
   
   addLikeState: (state = null, action) => {
+    switch (action.payload) {
+      case undefined:
+        return state;
+    }
     switch (action.type) {
       case 'UPDATE_ADD_LIKE_STATE':
         return state = action.payload;
