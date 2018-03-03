@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter
+} from "react-router-dom";
 import Submit from "./Submit.jsx";
 import AddContainer from "./Add.jsx";
 import Requests from "./Requests.jsx";
@@ -8,29 +13,39 @@ import Timeline from "./Timeline/Timeline.jsx";
 import { connect } from "react-redux";
 import actions from "../../Redux/actions/index";
 import axios from "axios";
-import LandingPage from '../LandingPage.jsx';
+import LandingPage from "../LandingPage.jsx";
 import { browerHistory, Redirect } from "react-router";
-import Comment from '../Comment/Comment.jsx'
-import LikesContainer from './Likes.jsx';
+import Comment from "../Comment/Comment.jsx";
+import LikesContainer from "./Likes.jsx";
+import ReactFilestack, { client } from "filestack-react";
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateTimeline: submissions => dispatch(actions.updateTimeline(submissions)),
+    updateTimeline: submissions =>
+      dispatch(actions.updateTimeline(submissions)),
     updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
+    updateAddState: (image_url, caption) =>
+      dispatch(actions.updateAddState(image_url, caption))
   };
 };
 
 const mapStateToProps = state => {
   return {
     currUser: state.currUser,
-    timelineState: state.timelineState
+    timelineState: state.timelineState,
+    addState: state.addState
   };
 };
+
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+
   }
+
+
 
   componentDidMount() {
     axios
@@ -79,13 +94,15 @@ class Home extends React.Component {
               </div>
             );
           })}
-          {(this.props.currUser ? (<Redirect to="/home"/>) : (<Redirect to="/"/>))}
+          {this.props.currUser ? <Redirect to="/home" /> : <Redirect to="/" />}
         </div>
         <Route exact path="/" component={LandingPage} />
         <Route path="/user" component={User} />
         <Route path="/submit" component={Submit} />
         <Route path="/add" component={AddContainer} />
+        
         <Route path="/requests" component={Requests} />
+        
       </div>
     );
   }

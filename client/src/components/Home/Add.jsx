@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux'
 import actions from "../../Redux/actions/index";
+import ReactFilestack, { client } from "filestack-react";
 
 
 const mapDispatchToProps = dispatch => {
@@ -19,12 +20,24 @@ const mapStateToProps = state => {
     currUser: state.currUser,
   };
 };
+const options = {
+  accept: "image/*",
+  maxFiles: 5,
+  storeTo: {
+    location: "s3"
+  }
+};
 class Add extends React.Component {
   constructor(props){
     super(props)
     this.postSubmission = this.postSubmission.bind(this)
     this.onCaptionChange = this.onCaptionChange.bind(this)
     this.onImageUrlChange = this.onImageUrlChange.bind(this)
+    this.onSuccess = this.onSuccess.bind(this);
+  }
+  onSuccess(result) {
+    console.log("file stack result: ", result);
+    this.props.addState.image_url = result.filesUploaded[0].url;
   }
 
   postSubmission() {
@@ -56,7 +69,14 @@ class Add extends React.Component {
 
   <div>
     <input type = 'form' placeholder = 'insert caption' onChange = {this.onCaptionChange}/>
-    <input type = 'form' placeholder = 'image url' onChange = {this.onImageUrlChange}/>
+    {/* <input type = 'form' placeholder = 'image url' onChange = {this.onImageUrlChange}/> */}
+    <ReactFilestack
+          apikey="Af4grpuWtTk6IdNCYHbTbz"
+          buttonText="Upload a picture!"
+          buttonClass="classname"
+          options={options}
+          onSuccess={this.onSuccess}
+        />
     <input type = 'submit' value = 'ADD POST' onClick = {()=>{this.postSubmission()}}/>
 
   </div>
