@@ -36,25 +36,16 @@ const mapStateToProps = state => {
     addState: state.addState
   };
 };
-const options = {
-  accept: "image/*",
-  maxFiles: 5,
-  storeTo: {
-    location: "s3"
-  }
-};
+
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onSuccess = this.onSuccess.bind(this);
+
   }
 
-  onSuccess(result) {
-    console.log("file stack result: ", result);
-    this.props.addState.image_url = result.filesUploaded[0].url;
-  }
+
 
   componentDidMount() {
     axios
@@ -109,13 +100,7 @@ class Home extends React.Component {
         <Route path="/user" component={User} />
         <Route path="/submit" component={Submit} />
         <Route path="/add" component={AddContainer} />
-        <ReactFilestack
-          apikey="Af4grpuWtTk6IdNCYHbTbz"
-          buttonText="Upload a picture!"
-          buttonClass="classname"
-          options={options}
-          onSuccess={this.onSuccess}
-        />
+        
         <Route path="/requests" component={Requests} />
         
       </div>
