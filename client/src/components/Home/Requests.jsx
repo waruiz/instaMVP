@@ -28,8 +28,8 @@ class Requests extends React.Component {
   postRequest () {
     axios
       .post('/requestfollower', {
-        host: this.props.currUser,
-        username: this.props.addRequestState.username
+        host: this.props.addRequestState.username,
+        username: this.props.currUser,
       })
       .then(result => {
         console.log('Successful friend request: ', result);
