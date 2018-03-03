@@ -148,6 +148,8 @@ module.exports = {
   },
 
   getUser: (req, res) => {
-    res.send('getting user')
+    johnny.getUser(req).then(result => {
+      res.send(result);
+    })
   }
 };

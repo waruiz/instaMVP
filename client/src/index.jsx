@@ -29,12 +29,14 @@ import config from '../../config.js';
 const mapDispatchToProps = dispatch => {
   return {
     updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
+    updateCurrUserInfo: userInfo => dispatch(actions.updateCurrUserInfo(userInfo))
   };
 };
 
 const mapStateToProps = state => {
   return {
     currUser: state.currUser,
+    currUserInfo: state.currUserInfo
   };
 };
 
@@ -61,8 +63,10 @@ class App extends React.Component {
     auth
       .signInWithEmailAndPassword(email.value, password.value)
       .then( response => {
-        console.log('RESPONSE FROM LOGIN HERE: ', response)
         this.props.updateCurrUser(response.email);
+        axios.get(`/user/${response.email}`).then(result => {
+          this.props.updateCurrUserInfo(result.data);
+        })
       })
       .catch(function(error) {
         console.log("ERROR: ", error);

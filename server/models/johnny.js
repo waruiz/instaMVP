@@ -150,6 +150,14 @@ var getSubsByFollowing = function(req){
 		})
 	})
 })
+};
+
+var getUser = function(req) {
+	return db.Users.findOne({
+		where: {
+			username: req.params.username
+		}
+	})
 }
 
 module.exports = {
@@ -160,5 +168,6 @@ module.exports = {
 	getFollowing,
 	getSubsByFollowing,
 	deleteFollower,
-	deleteFollowing
+	deleteFollowing,
+	getUser
 };

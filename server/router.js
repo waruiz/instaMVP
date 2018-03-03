@@ -10,7 +10,7 @@ router.get('/comments/:sub', controller.getSubComments);
 router.get('/pending/:user', controller.getPendingFollowers);
 router.get('/info/:username', controller.getUserInfo);
 router.get('/subs/following/:user',controller.getSubsByFollowing);
-router.get('userID',controller.getUser);
+router.get('/user/:username',controller.getUser);
 
 router.post('/info', controller.postInfo);
 router.post('/submit', controller.submit);
