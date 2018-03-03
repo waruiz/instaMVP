@@ -34,7 +34,6 @@ class Comment extends React.Component {
 
   addComment(props) {
     var content = $(`.${this.props.postID}`).val();
-    console.log('HERE IS THE USER ID', this.props.currUserInfo.id)
     axios
       .post("/comment", {
         user_id: this.props.currUserInfo.id,
@@ -68,12 +67,10 @@ class Comment extends React.Component {
       <div align="center">
         <div align="center">
           {this.props.postID}
-
           <table>
             <tbody>
               <tr>
                 <td>
-                  {console.log('HERE IS THE POST COMMENT STATE: ', this.props.postCommentState)}
                   {this.props.postCommentState
                     .filter((comment, i) => {
                       if (comment.submission_id === this.props.postID) {
