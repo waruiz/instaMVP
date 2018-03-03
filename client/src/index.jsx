@@ -29,14 +29,12 @@ import config from '../../config.js';
 const mapDispatchToProps = dispatch => {
   return {
     updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
-
   };
 };
 
 const mapStateToProps = state => {
   return {
     currUser: state.currUser,
-
   };
 };
 
@@ -81,10 +79,8 @@ class App extends React.Component {
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
       .then(response => {
-        console.log("RESPONSE: ", response);
         axios.post('/info', {username: response.email, password: password.value, name: response.email}).then(response => {
           console.log('successfully added user to local database')
-          
         })
       })
       .catch(function(error) {
@@ -97,9 +93,7 @@ class App extends React.Component {
       .auth()
       .signOut()
       .then((response) => {
-        console.log('response from logout: ', response)
         this.props.updateCurrUser(null);
-        console.log(this.props);
       });
   }
 
