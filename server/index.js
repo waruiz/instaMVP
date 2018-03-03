@@ -27,6 +27,6 @@ app.get('/*', (req, res)=> {
   res.sendFile( path.resolve(__dirname, '../client/dist', 'index.html') );
 })
 
-app.listen(8080, () => console.log("I HEAR YOU ON 8080 MY DUDE"));
+app.listen(8080, () => console.log("Server listening on port 8080."));
 
 module.exports = app;

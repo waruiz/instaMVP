@@ -35,9 +35,7 @@ class Add extends React.Component {
         caption: this.props.addState.caption,
       })
       .then(response => {
-        console.log("this is the response", response);
         axios.get(`/subs/${this.props.currUser}`).then(response => {
-          console.log('getsuccess')
           this.props.updateTimeline(response.data)
         })
       })
@@ -57,7 +55,6 @@ class Add extends React.Component {
     return(
 
   <div>
-    {console.log(this.props)}
     <input type = 'form' placeholder = 'insert caption' onChange = {this.onCaptionChange}/>
     <input type = 'form' placeholder = 'image url' onChange = {this.onImageUrlChange}/>
     <input type = 'submit' value = 'ADD POST' onClick = {()=>{this.postSubmission()}}/>

@@ -26,7 +26,6 @@ class PostsContainer extends React.Component {
 
   getUserPosts() {
     axios.get(`/subs/${this.props.currUser}`).then(result => {
-      console.log(this.props);
       this.props.updateUserPosts(result.data);
     });
   }

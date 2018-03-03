@@ -32,10 +32,6 @@ class Comment extends React.Component {
   addComment(props) {
     var content = $(`.${this.props.postID}`).val();
     var theUser = 1;
-    // if (this.props.currUser) {
-    //   theUser = this.props.currUser;
-    // }
-    console.log(this.props.postID, 'inside my post dog')
     axios
       .post("/comment", {
         user_id: theUser,
@@ -44,11 +40,9 @@ class Comment extends React.Component {
       })
       .then(response => {
         $(`.${this.props.postID}`).val('')
-        console.log("this is the response", response);
         this.props.updatePostComments(response.data)
       })
       .catch(error => {
-        console.log("this is our error", error);
       }).then(axios.get(`/comments/${this.props.postID}`))
   }
 
@@ -61,10 +55,8 @@ class Comment extends React.Component {
   }
 
   renderComments(props) {
-    console.log(`This POST ID IS ${this.props.postID}`)
     axios.get(`/comments/${this.props.postID}`).then(result => {
       this.props.updatePostComments(result.data);
-      console.log(this.props, "here be my COMMMENT Props");
     })
   }
 

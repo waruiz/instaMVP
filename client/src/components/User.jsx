@@ -20,9 +20,7 @@ class User extends React.Component {
   constructor (props) {
     super (props);
   }
-  // axios
   render () {
-    // mapping over axios res
     return (
       <div>
         <nav>

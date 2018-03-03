@@ -12,7 +12,6 @@ import {
   withRouter
 } from "react-router-dom";
 
-// import App from "./components/app.jsx";
 import NotFound from "./NotFound.jsx";
 import LandingPage from "./components/LandingPage.jsx";
 import Home from "./components/Home/Home.jsx";
@@ -25,28 +24,18 @@ import { connect } from "react-redux";
 import actions from "./Redux/actions/index";
 import { browerHistory, Redirect } from "react-router";
 import axios from 'axios'
+import config from '../../config.js';
 
 const mapDispatchToProps = dispatch => {
   return {
     updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
-
   };
 };
 
 const mapStateToProps = state => {
   return {
     currUser: state.currUser,
-
   };
-};
-
-var config = {
-  apiKey: "AIzaSyBNcvgQ3DZNMCGvtUwsAH4roqoRcph1ZWw",
-  authDomain: "instamvp-27932.firebaseapp.com",
-  databaseURL: "https://instamvp-27932.firebaseio.com",
-  projectId: "instamvp-27932",
-  storageBucket: "instamvp-27932.appspot.com",
-  messagingSenderId: "434695589661"
 };
 
 firebase.initializeApp(config);
@@ -73,8 +62,6 @@ class App extends React.Component {
       .signInWithEmailAndPassword(email.value, password.value)
       .then( response => {
         this.props.updateCurrUser(response.email);
-        console.log(this.props.currUser);
-        console.log('STATE CHANGE COMPLETE')
       })
       .catch(function(error) {
         console.log("ERROR: ", error);
@@ -92,10 +79,8 @@ class App extends React.Component {
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
       .then(response => {
-        console.log("RESPONSE: ", response);
         axios.post('/info', {username: response.email, password: password.value, name: response.email}).then(response => {
           console.log('successfully added user to local database')
-          
         })
       })
       .catch(function(error) {
@@ -108,9 +93,7 @@ class App extends React.Component {
       .auth()
       .signOut()
       .then((response) => {
-        console.log('response from logout: ', response)
         this.props.updateCurrUser(null);
-        console.log(this.props);
       });
   }
 
@@ -139,26 +122,10 @@ class App extends React.Component {
             Log out
           </button>
         </div>
-        {console.log('CURR USER ', this.props)}
         {(this.props.currUser ? (<Redirect to="/home"/>) : (<Redirect to="/"/>))}
-
-        {/* <Route
-          exact
-          path="/"
-          render={() =>(
-            this.props.currUser ? (
-              <Redirect to="/home" />
-            ) : (
-              <Redirect to="/" />
-            )
-          )
-          }
-        /> */}
-
         <Route exact path="/" component={LandingPage} />
         <Route path="/home" component={Home} />
         <Route path="/user" component={User} />
-
       </div>
     );
   }
