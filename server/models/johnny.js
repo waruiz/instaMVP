@@ -109,6 +109,9 @@ var getSubsByFollowing = function(req){
 			username: req.params.user
 		}
 	}).then( result => {
+		if (result.length === 0) {
+			return 'Not following anyone.';
+		}
 		return db.Followers.findAll({
 			where: {
 				follower_id: result[0].dataValues.id
