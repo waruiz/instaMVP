@@ -32,7 +32,6 @@ var getFollowers = function(req) {
 				host_id: result[0].dataValues.id
 			}
 		}).then(results => {
-			console.log('RESULTS HEREEE ', results);
 			var list = [];
 			results.forEach(element => {
 				list.push(element.dataValues.id);
@@ -47,7 +46,6 @@ var getFollowers = function(req) {
 					}
 				}
 			}).then(function(results) {
-				console.log(results)
 				var list = [];
 				results.forEach(function(element) {
 					list.push(element.dataValues);
@@ -130,7 +128,6 @@ var getSubsByFollowing = function(req){
 				var list = results.map( (element) => {
 					return element.dataValues;
 				})
-				console.log(list)
 				return list;
 			})
 			.then(submissions => {
