@@ -42,10 +42,11 @@ class Comment extends React.Component {
       })
       .then(response => {
         $(`.${this.props.postID}`).val("");
+        response.data.username = this.props.currUserInfo.username;
         this.props.updatePostComments(response.data);
       })
       .catch(error => {})
-      .then(axios.get(`/comments/${this.props.postID}`));
+      .then(axios.get(`/comments/${this.props.postID}`))
   }
 
   componentDidMount(props) {
@@ -83,6 +84,7 @@ class Comment extends React.Component {
                           <span className="commentBody">
                             <span className="userCell">
                               <a href={"#"} className="userLink">
+                                {console.log(comment, typeof comment.username)}
                                 <strong>{comment.username.split('@')[0]} </strong>
                               </a>
                             </span>
