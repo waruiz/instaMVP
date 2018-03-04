@@ -6,7 +6,8 @@ import axios from "axios";
 import {connect} from "react-redux";
 import actions from "../../Redux/actions/index";
 import Comment from '../Comment/Comment.jsx';
-import { Image, Circle, Grid, Row, Col } from 'react-bootstrap';
+import {Image, Circle, Grid, Row, Col} from 'react-bootstrap';
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -28,10 +29,7 @@ class PostsContainer extends React.Component {
 
   getUserPosts() {
     axios.get(`/subs/${this.props.currUser}`).then(result => {
-<<<<<<< HEAD
-=======
       console.log(result.data, 'here are post container props');
->>>>>>> fixed user render
       this.props.updateUserPosts(result.data);
     });
   }
@@ -45,12 +43,10 @@ class PostsContainer extends React.Component {
 
     this.props.userPostsState.forEach((post, i) => {
 
-        content.push(
-          <Col className="postClass" key={i} xs={6} md={4} className="col-sm">
-            <Image width="50%" src={post.image_url} rounded/>
-            <Comment postID={post.id}/>
-          </Col>
-        )
+      content.push(<Col className="col-sm" key={i} xs={6} md={4}>
+        <Image width="50%" src={post.image_url} rounded="rounded"/>
+        <Comment postID={post.id}/>
+      </Col>)
 
     });
 
@@ -61,13 +57,12 @@ class PostsContainer extends React.Component {
   }
 
   render() {
-    return (
-      <Grid id="post-container" className="container post-container">
+    return (<Grid id="post-container" className="container post-container">
       <h1 >
         Posts
       </h1>
 
-        {this.postRender()}
+      {this.postRender()}
 
     </Grid>);
   }
