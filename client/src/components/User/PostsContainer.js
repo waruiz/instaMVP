@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import actions from "../../Redux/actions/index";
 import Comment from '../Comment/Comment.jsx';
 import {Image, Circle, Grid, Row, Col} from 'react-bootstrap';
+import "../../../dist/styles.css";
 
 
 const mapDispatchToProps = dispatch => {
@@ -43,8 +44,8 @@ class PostsContainer extends React.Component {
 
     this.props.userPostsState.forEach((post, i) => {
 
-      content.push(<Col className="col-sm" key={i} xs={6} md={4}>
-        <Image width="50%" src={post.image_url} rounded="rounded"/>
+      content.push(<Col className="col-sm post-container" key={i} xs={6} md={4}>
+        <Image width="100%" src={post.image_url} rounded="rounded"/>
         <Comment postID={post.id}/>
       </Col>)
 
@@ -57,7 +58,7 @@ class PostsContainer extends React.Component {
   }
 
   render() {
-    return (<Grid id="post-container" className="container post-container">
+    return (<Grid className="container">
       <h1 >
         Posts
       </h1>

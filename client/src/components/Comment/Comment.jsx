@@ -4,6 +4,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 import actions from "../../Redux/actions/index";
 import $ from "jquery";
+import "../../../dist/styles.css";
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -67,11 +69,12 @@ class Comment extends React.Component {
     return (
       <div align="center">
         <div align="center">
-          {this.props.postID}
+
           <table>
             <tbody>
               <tr>
-                <td>
+                <td >
+                  <div className="overflow-wrapper">
                   {this.props.postCommentState
                     .filter((comment, i) => {
                       if (comment.submission_id === this.props.postID) {
@@ -80,7 +83,7 @@ class Comment extends React.Component {
                     })
                     .map((comment, i) => {
                       return (
-                        <div align="left" key={i}>
+                        <div align="left" key={i} class>
                           <span className="commentBody">
                             <span className="userCell">
                               <a href={"#"} className="userLink">
@@ -100,6 +103,7 @@ class Comment extends React.Component {
                         </div>
                       );
                     })}
+                    </div>
                   <form
                     align="center"
                     className="form-inline sub-comments"
@@ -109,7 +113,7 @@ class Comment extends React.Component {
                       type="textbox"
                       className={this.props.postID}
                       placeholder="add comment"
-                    />
+                    /> <br></br>
 
                     <input
                       type="button"
