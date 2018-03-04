@@ -18,8 +18,7 @@ class User extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
+  // axios
   render() {
     // mapping over axios res
     return (<div>
@@ -35,7 +34,6 @@ class User extends React.Component {
 
       <Route path="/home" component={Home}/>
     </div>);
-
   }
 }
 
