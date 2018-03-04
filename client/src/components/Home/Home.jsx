@@ -19,7 +19,7 @@ import { browerHistory, Redirect } from "react-router";
 import Comment from "../Comment/Comment.jsx";
 import LikesContainer from "./Likes.jsx";
 import ReactFilestack, { client } from "filestack-react";
-// import './cssgram.css';
+import {Image, Circle, Grid, Row, Col} from 'react-bootstrap';
 
 
 
@@ -97,25 +97,24 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+<Grid>
         <h1>Insta Home</h1>
         <nav>
-          <ul>
-            <li>
-              <Link to="/submit">Submit</Link>
-            </li>
-            <li>
-              <Link to="/add">Add</Link>
+          <Row>
+                      <Link to="/submit">Submit</Link>
+                              <Link to="/add"></Link>
+          <Col xs={6} md={4}>
+                Add a Picture
               <AddContainer />
-            </li>
-            <li>
+            </Col>
+              <Col xs={6} md={4}>
               <Link to="/requests">Requests</Link>
               <Requests />
-            </li>
-            <li>
+    </Col>
+            <button>
               <Link to="/user">User</Link>
-            </li>
-          </ul>
+          </button>
+      </Row>
         </nav>
 
         <div id="timeline" align="center">
@@ -139,7 +138,7 @@ class Home extends React.Component {
         <Route path="/add" component={AddContainer} />
 
         <Route path="/requests" component={Requests} />
-      </div>
+        </Grid>
     );
   }
 }
