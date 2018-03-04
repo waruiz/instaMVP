@@ -57,7 +57,7 @@ class Comment extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.updatePostComments("initialize");  
+    this.props.updatePostComments("initialize");
   }
 
   renderComments(props) {

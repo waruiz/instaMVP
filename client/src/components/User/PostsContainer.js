@@ -1,10 +1,12 @@
 import React from "react";
 
-import { Route, Link } from "react-router-dom";
+import {Route, Link} from "react-router-dom";
 
 import axios from "axios";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import actions from "../../Redux/actions/index";
+import Comment from '../Comment/Comment.jsx';
+import { Image, Circle, Grid, Row, Col } from 'react-bootstrap';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -12,7 +14,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 const mapStateToProps = state => {
-  return { userPostsState: state.userPostsState, currUser: state.currUser };
+  return {userPostsState: state.userPostsState, currUser: state.currUser};
 };
 
 class PostsContainer extends React.Component {
@@ -26,48 +28,47 @@ class PostsContainer extends React.Component {
 
   getUserPosts() {
     axios.get(`/subs/${this.props.currUser}`).then(result => {
-      console.log(this.props);
+      console.log(result.data, 'here are post container props');
       this.props.updateUserPosts(result.data);
     });
   }
 
+  componentDidMount() {
+    this.getUserPosts();
+  }
+
+  postRender(props) {
+    var content = [];
+
+    this.props.userPostsState.forEach((post, i) => {
+
+        content.push(
+          <Col className="postClass" key={i} xs={6} md={4} className="col-sm">
+            <Image width="50%" src={post.image_url} rounded/>
+            <Comment postID={post.id}/>
+          </Col>
+        )
+
+    });
+
+    return (<div align="left">
+      {content}
+    </div>);
+
+  }
+
   render() {
     return (
-      <div id="posts-container">
-        <h1
-          className="btn btn-primary"
-          data-toggle="modal"
-          data-target=".postbox"
-          onClick={this.getUserPosts}
-        >
-          Posts
-        </h1>
+      <Grid id="post-container" className="container post-container">
+      <h1 >
+        Posts
+      </h1>
 
-        <div
-          className="modal fade postbox"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="myLargeModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog modal-sm">
-            <div className="modal-content">
-              {this.props.userPostsState.map((post, i) => {
-                return (
-                  <div key={i}>
-                    <img width="100%" src={post} />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+        {this.postRender()}
+
+    </Grid>);
   }
 }
 
-const PostsContainerPage = connect(mapStateToProps, mapDispatchToProps)(
-  PostsContainer
-);
+const PostsContainerPage = connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
 export default PostsContainerPage;
