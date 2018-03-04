@@ -82,12 +82,7 @@ const getUserSubs = (req, res) => {
         user_id: result[0].dataValues.id
       }
     }).then(results => {
-      var list = [];
-      results.forEach(element => {
-        list.push(element.dataValues.image_url);
-      });
-
-      return list;
+          return results;
     });
   });
 };
