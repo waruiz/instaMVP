@@ -121,8 +121,13 @@ class Home extends React.Component {
           <h1>My Timeline</h1>
           {this.props.timelineState.map((item, i) => {
             return (
+<<<<<<< HEAD
               <div className="post-container" key={i}>
                 <h3>{item.username.split('@')[0]}</h3>
+=======
+              <div key={i}>
+                <h3>{item.username}</h3>
+>>>>>>> pulling master
                 <img width="40%" src={item.image_url} className = {this.state.filter} onClick = {() =>this.filterRandom()}/>
                 <LikesContainer postID={item.id} />
                 <p>{item.caption}</p>

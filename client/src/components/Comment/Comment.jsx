@@ -87,8 +87,12 @@ class Comment extends React.Component {
                           <span className="commentBody">
                             <span className="userCell">
                               <a href={"#"} className="userLink">
+<<<<<<< HEAD
                                 {console.log(comment, typeof comment.username)}
                                 <strong>{comment.username.split('@')[0]} </strong>
+=======
+                                <strong>{comment.username} </strong>
+>>>>>>> pulling master
                               </a>
                             </span>
 
