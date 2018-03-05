@@ -98,6 +98,14 @@ const allReducers = combineReducers({
       return state = action.payload;
       default: return state;
     }
+  },
+
+  currClickedUser: (state = null, action) => {
+    switch (action.type) {
+      case 'UPDATE_CURR_CLICKED_USER':
+      return state = action.payload;
+      default: return state;
+    }
   }
 
 });

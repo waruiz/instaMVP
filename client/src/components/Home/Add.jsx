@@ -48,9 +48,7 @@ class Add extends React.Component {
         caption: this.props.addState.caption,
       })
       .then(response => {
-        axios.get(`/subs/${this.props.currUser}`).then(response => {
-          this.props.updateTimeline(response.data)
-        })
+        console.log('Successful posted!')
       })
       .catch(error => {
         console.log("this is our error", error);

@@ -19,9 +19,7 @@ import { browerHistory, Redirect } from "react-router";
 import Comment from "../Comment/Comment.jsx";
 import LikesContainer from "./Likes.jsx";
 import ReactFilestack, { client } from "filestack-react";
-import {Image, Circle, Grid, Row, Col} from 'react-bootstrap';
-
-
+import { Image, Circle, Grid, Row, Col } from "react-bootstrap";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -73,15 +71,15 @@ const filters = [
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
-      filter: ''
-    }
-    this.filterRandom = this.filterRandom.bind(this)
+    this.state = {
+      filter: ""
+    };
+    this.filterRandom = this.filterRandom.bind(this);
   }
   filterRandom() {
     this.setState({
-      filter: filters[(Math.floor(Math.random()*filters.length))]
-    })
+      filter: filters[Math.floor(Math.random() * filters.length)]
+    });
   }
 
   componentDidMount() {
@@ -97,24 +95,24 @@ class Home extends React.Component {
 
   render() {
     return (
-<Grid>
+      <Grid>
         <h1>Insta Home</h1>
         <nav>
           <Row>
-                      <Link to="/submit">Submit</Link>
-                              <Link to="/add"></Link>
-          <Col xs={6} md={4}>
-                Add a Picture
+            <Link to="/submit">Submit</Link>
+            <Link to="/add" />
+            <Col xs={6} md={4}>
+              Add a Picture
               <AddContainer />
             </Col>
-              <Col xs={6} md={4}>
+            <Col xs={6} md={4}>
               <Link to="/requests">Requests</Link>
               <Requests />
-    </Col>
+            </Col>
             <button>
               <Link to="/user">User</Link>
-          </button>
-      </Row>
+            </button>
+          </Row>
         </nav>
 
         <div id="timeline" align="center">
@@ -122,15 +120,20 @@ class Home extends React.Component {
           {this.props.timelineState.map((item, i) => {
             return (
               <div className="post-container" key={i}>
-                <h3>{item.username.split('@')[0]}</h3>
-                <img width="40%" src={item.image_url} className = {this.state.filter} onClick = {() =>this.filterRandom()}/>
+                <h3>{item.username}</h3>
+                <img
+                  width="40%"
+                  src={item.image_url}
+                  className={this.state.filter}
+                  onClick={() => this.filterRandom()}
+                />
                 <LikesContainer postID={item.id} />
                 <p>{item.caption}</p>
                 <Comment postID={item.id} />
               </div>
             );
           })}
-          {this.props.currUser ? <Redirect to="/home" /> : <Redirect to="/" />}
+          {!this.props.currUser ? <Redirect to="/" /> : null}
         </div>
         <Route exact path="/" component={LandingPage} />
         <Route path="/user" component={User} />
@@ -138,7 +141,7 @@ class Home extends React.Component {
         <Route path="/add" component={AddContainer} />
 
         <Route path="/requests" component={Requests} />
-        </Grid>
+      </Grid>
     );
   }
 }

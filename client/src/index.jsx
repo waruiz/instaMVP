@@ -30,14 +30,16 @@ import config from '../../config.js';
 const mapDispatchToProps = dispatch => {
   return {
     updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
-    updateCurrUserInfo: userInfo => dispatch(actions.updateCurrUserInfo(userInfo))
+    updateCurrUserInfo: userInfo => dispatch(actions.updateCurrUserInfo(userInfo)),
+    updateCurrClickedUser: user => dispatch(actions.updateCurrClickedUser(user))
   };
 };
 
 const mapStateToProps = state => {
   return {
     currUser: state.currUser,
-    currUserInfo: state.currUserInfo
+    currUserInfo: state.currUserInfo,
+    currClickedUser: state.currClickedUser
   };
 };
 
@@ -67,6 +69,7 @@ class App extends React.Component {
         this.props.updateCurrUser(response.email);
         axios.get(`/user/${response.email}`).then(result => {
           this.props.updateCurrUserInfo(result.data);
+          this.props.updateCurrClickedUser(result.data);
         })
       })
       .catch(function(error) {
