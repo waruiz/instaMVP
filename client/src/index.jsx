@@ -25,7 +25,7 @@ import {connect} from "react-redux";
 import actions from "./Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
 import axios from 'axios'
-import config from '../../config.js';
+// import config from '../../config.js';
 
 
 const mapDispatchToProps = dispatch => {
@@ -40,7 +40,7 @@ const mapStateToProps = state => {
   return {currUser: state.currUser, currUserInfo: state.currUserInfo, currClickedUser: state.currClickedUser};
 };
 
-firebase.initializeApp(config);
+firebase.initializeApp(process.env.config);
 
 const store = createStore(allReducers);
 
