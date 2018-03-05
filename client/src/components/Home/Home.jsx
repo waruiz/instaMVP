@@ -20,7 +20,7 @@ import Comment from "../Comment/Comment.jsx";
 import LikesContainer from "./Likes.jsx";
 import ReactFilestack, { client } from "filestack-react";
 import {Image, Circle, Grid, Row, Col} from 'react-bootstrap';
-
+import '../../styles/button.css';
 
 
 const mapDispatchToProps = dispatch => {

@@ -9,6 +9,7 @@ import InfoPage from './User/Info.js';
 import {connect} from "react-redux";
 import actions from "../Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
+import styles from '../styles/button.css';
 
 const mapStateToProps = state => {
   return {currUser: state.currUser};
@@ -25,6 +26,7 @@ class User extends React.Component {
       <nav>
         <Link to="/home">Home</Link>
       </nav>
+      <button className="button search">Search</button>
       <h1>User Page</h1>
       <Following/>
       <Followers/>
