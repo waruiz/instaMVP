@@ -40,7 +40,7 @@ const mapStateToProps = state => {
   return {currUser: state.currUser, currUserInfo: state.currUserInfo, currClickedUser: state.currClickedUser};
 };
 
-firebase.initializeApp(process.env.config || config);
+firebase.initializeApp(process.env.config);
 
 const store = createStore(allReducers);
 
