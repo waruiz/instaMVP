@@ -16,8 +16,10 @@ var getLikes = function(req) {
 };
 
 var getUserInfo = function(req) {
-	return db.Users.find({
-		where: req.params
+	return db.Users.findOne({
+		where: {
+			username: req.params.username
+		}
 	});
 };
 

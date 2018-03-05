@@ -17,6 +17,7 @@ router.post('/submit', controller.submit);
 router.post('/comment', controller.comment);
 router.post('/requestfollower', controller.requestFollower);
 
+router.put('/updateProfile', controller.updateProfile);
 router.put('/like', controller.putLike);
 router.put('/addfollower', controller.addFollower);
 router.put('/info', controller.updateInfo);

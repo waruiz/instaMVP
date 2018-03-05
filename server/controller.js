@@ -5,6 +5,14 @@ const comment = require("./models/comment");
 const will = require("./models/willEndpoints");
 
 module.exports = {
+  updateProfile: (req, res) => {
+    will.updateProfile(req, res)
+      .then(result => {
+        console.log(result);
+        res.send(result);
+      })
+  },
+
   putLike: (req, res) => {
     will.putLike(req)
       .then(result => {
