@@ -120,7 +120,7 @@ class App extends React.Component {
           ? (<Redirect to="/home"/>)
           : (<Redirect to="/"/>))
       }
-      <Route exact="exact" path="/" component={LandingPage}/>
+      <Route exact={true} path="/" component={LandingPage}/>
       <Route path="/home" component={Home}/>
       <Route path="/user" component={User}/>
       <Route path="/profile" component={Profile} />
