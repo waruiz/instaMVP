@@ -1,8 +1,10 @@
 const Sequelize = require("sequelize");
 
+let connection;
+
 if (process.env.DATABASE_URL) {
 	const remoteDB = process.env.DATABASE_URL.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
-	const connection = new Sequelize(remoteDB[5], remoteDB[1], remoteDB[2], {
+	connection = new Sequelize(remoteDB[5], remoteDB[1], remoteDB[2], {
 		host: remoteDB[3],
 		port: remoteDB[4],
 		dialect: "mysql",
@@ -13,7 +15,7 @@ if (process.env.DATABASE_URL) {
 		}
 	});
 } else {
-	const connection = new Sequelize("insta", "root", "", {
+	connection = new Sequelize("insta", "root", "", {
 		host: "localhost",
 		dialect: "mysql",
 		pool: {
