@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js && npm run dev-react",
-    "dev-react": "webpack -d --watch"
+    "postinstall": "npm run dev-react",
+    "start": "node server/index.js",
+    "dev-react": "webpack"
   },
   "keywords": [],
   "author": "",
