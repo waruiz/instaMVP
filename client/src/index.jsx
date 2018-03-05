@@ -25,7 +25,7 @@ import {connect} from "react-redux";
 import actions from "./Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
 import axios from 'axios'
-import config from '../../config.js';
+// import config from '../../config.js';
 
 
 const mapDispatchToProps = dispatch => {
