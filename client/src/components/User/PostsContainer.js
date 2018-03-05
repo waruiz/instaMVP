@@ -32,9 +32,7 @@ class PostsContainer extends React.Component {
   }
 
   getUserPosts() {
-    console.log('HERE IS CURR CLICKED USER FROM POST CONTAINER: ', this.props.currClickedUser)
     axios.get(`/subs/${this.props.currClickedUser.username}`).then(result => {
-      console.log(result.data, "here are post container props");
       this.props.updateUserPosts(result.data);
     });
   }

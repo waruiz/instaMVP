@@ -66,7 +66,7 @@ class Followers extends React.Component {
             <div className="modal-content">
               {this.props.followersState.map((item, i) => {
                 return (
-                  <div key={i} onClick={this.clickUser(i)}>
+                  <div key={i} onClick={() => this.clickUser(i)}>
                     {item.username.split("@")[0]}
                   </div>
                 );
