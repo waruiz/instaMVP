@@ -105,14 +105,14 @@ class Home extends React.Component {
               Add a Picture
               <AddContainer />
             </Col>
-            <Col xs={6} md={4}>
-              <Link to="/requests">Requests</Link>
+              <Col xs={6} md={4}>
+              <Link to="/requests"></Link>
               <Requests />
-            </Col>
-            <button>
-              <Link to="/user">User</Link>
-            </button>
-          </Row>
+    </Col>
+
+              <Link to="/user"><button className="btn">Users</button></Link>
+
+      </Row>
         </nav>
 
         <div id="timeline" align="center">

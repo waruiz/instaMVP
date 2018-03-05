@@ -83,7 +83,7 @@ class Comment extends React.Component {
                     })
                     .map((comment, i) => {
                       return (
-                        <div align="left" key={i} class>
+                        <div align="left" key={i}>
                           <span className="commentBody">
                             <span className="userCell">
                               <a href={"#"} className="userLink">
