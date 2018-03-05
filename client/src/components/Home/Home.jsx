@@ -108,12 +108,12 @@ class Home extends React.Component {
               <AddContainer />
             </Col>
               <Col xs={6} md={4}>
-              <Link to="/requests">Requests</Link>
+              <Link to="/requests"></Link>
               <Requests />
     </Col>
-            <button>
-              <Link to="/user">User</Link>
-          </button>
+
+              <Link to="/user"><button className="btn">Users</button></Link>
+
       </Row>
         </nav>
 

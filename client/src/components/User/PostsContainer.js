@@ -45,7 +45,7 @@ class PostsContainer extends React.Component {
     this.props.userPostsState.forEach((post, i) => {
 
       content.push(<Col className="col-sm post-container" key={i} xs={6} md={4}>
-        <Image width="100%" src={post.image_url} rounded="rounded"/>
+        <Image width="100%" className="post-image" src={post.image_url} rounded="rounded"/>
         <Comment postID={post.id}/>
       </Col>)
 
