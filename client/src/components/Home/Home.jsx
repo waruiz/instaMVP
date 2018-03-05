@@ -19,16 +19,9 @@ import { browerHistory, Redirect } from "react-router";
 import Comment from "../Comment/Comment.jsx";
 import LikesContainer from "./Likes.jsx";
 import ReactFilestack, { client } from "filestack-react";
-<<<<<<< HEAD
-import { Image, Circle, Grid, Row, Col } from "react-bootstrap";
-=======
 import {Image, Circle, Grid, Row, Col} from 'react-bootstrap';
 import '../../styles/button.css';
 
-<<<<<<< HEAD
->>>>>>> pushing now
-=======
->>>>>>> 25008e92da124559fab4563a049623f74d6a4878
 
 const mapDispatchToProps = dispatch => {
   return {

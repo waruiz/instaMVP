@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import {createStore} from "redux";
 import allReducers from "./Redux/reducers";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import {
   BrowserRouter as Router,
   Route,
@@ -20,12 +20,12 @@ import Navbar from "./components/Home/Navbar.jsx";
 import User from "./components/User.jsx";
 import * as firebase from "firebase";
 
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import actions from "./Redux/actions/index";
-import { browerHistory, Redirect } from "react-router";
+import {browerHistory, Redirect} from "react-router";
 import axios from 'axios'
 import config from '../../config.js';
-// import './components/home/cssgram.css';
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -36,11 +36,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  return {
-    currUser: state.currUser,
-    currUserInfo: state.currUserInfo,
-    currClickedUser: state.currClickedUser
-  };
+  return {currUser: state.currUser, currUserInfo: state.currUserInfo, currClickedUser: state.currClickedUser};
 };
 
 firebase.initializeApp(config);
@@ -63,18 +59,15 @@ class App extends React.Component {
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
 
-    auth
-      .signInWithEmailAndPassword(email.value, password.value)
-      .then( response => {
-        this.props.updateCurrUser(response.email);
-        axios.get(`/user/${response.email}`).then(result => {
-          this.props.updateCurrUserInfo(result.data);
-          this.props.updateCurrClickedUser(result.data);
-        })
+    auth.signInWithEmailAndPassword(email.value, password.value).then(response => {
+      this.props.updateCurrUser(response.email);
+      axios.get(`/user/${response.email}`).then(result => {
+        this.props.updateCurrUserInfo(result.data);
+        this.props.updateCurrClickedUser(result.data);
       })
-      .catch(function(error) {
-        console.log("ERROR: ", error);
-      });
+    }).catch(function(error) {
+      console.log("ERROR: ", error);
+    });
   }
 
   signUp() {
@@ -85,69 +78,58 @@ class App extends React.Component {
     const btnSignUp = document.getElementById("btnSignUp");
     const btnLogout = document.getElementById("btnLogout");
 
-    auth
-      .createUserWithEmailAndPassword(email.value, password.value)
-      .then(response => {
-        axios.post('/info', {username: response.email, password: password.value, name: response.email}).then(response => {
-          console.log('successfully added user to local database')
-        })
+    auth.createUserWithEmailAndPassword(email.value, password.value).then(response => {
+      axios.post('/info', {
+        username: response.email,
+        password: password.value,
+        name: response.email
+      }).then(response => {
+        console.log('successfully added user to local database')
       })
-      .catch(function(error) {
-        console.log("ERROR: ", error);
-      });
+    }).catch(function(error) {
+      console.log("ERROR: ", error);
+    });
   }
 
   logout() {
-    firebase
-      .auth()
-      .signOut()
-      .then((response) => {
-        this.props.updateCurrUser(null);
-      });
+    firebase.auth().signOut().then((response) => {
+      this.props.updateCurrUser(null);
+    });
   }
 
   render(props) {
-    return (
-      <div>
-        <div id="login">
-          <input type="email" id="email" placeholder="Email" />
-          <input type="password" id="password" placeholder="Password" />
+    return (<div>
+      <div id="login">
+        <input type="email" id="email" placeholder="Email"/>
+        <input type="password" id="password" placeholder="Password"/>
 
-          <button id="btnLogin" onClick={() => this.login()} className="btn btn-action">
-            Login
-          </button>
-          <button
-            id="btnSignUp"
-            onClick={() => this.signUp()}
-            className="btn btn-secondary"
-          >
-            Sign Up
-          </button>
-          <button
-            id="btnLogout"
-            onClick={() => this.logout()}
-            className="btn btn-action hide"
-          >
-            Log out
-          </button>
-        </div>
-        {(this.props.currUser ? (<Redirect to="/home"/>) : (<Redirect to="/"/>))}
-        <Route exact path="/" component={LandingPage} />
-        <Route path="/home" component={Home} />
-        <Route path="/user" component={User} />
+        <button id="btnLogin" onClick={() => this.login()} className="btn btn-action">
+          Login
+        </button>
+        <button id="btnSignUp" onClick={() => this.signUp()} className="btn btn-secondary">
+          Sign Up
+        </button>
+        <button id="btnLogout" onClick={() => this.logout()} className="btn btn-action hide">
+          Log out
+        </button>
       </div>
-    );
+      {
+        (
+          this.props.currUser
+          ? (<Redirect to="/home"/>)
+          : (<Redirect to="/"/>))
+      }
+      <Route exact="exact" path="/" component={LandingPage}/>
+      <Route path="/home" component={Home}/>
+      <Route path="/user" component={User}/>
+    </div>);
   }
 }
 
 const AppPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
-ReactDOM.render(
-  <Provider store={store}>
-      <Router>
-      <AppPage />
-    </Router>
-  </Provider>
-  ,
-  document.getElementById("app")
-);
+ReactDOM.render(<Provider store={store}>
+  <Router>
+    <AppPage/>
+  </Router>
+</Provider>, document.getElementById("app"));
