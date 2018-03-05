@@ -41,7 +41,8 @@ class PostsContainer extends React.Component {
     this.getUserPosts();
   }
 
-  postRender(props) {
+   // removed props from params think it was causing warnings
+  postRender() {
     var content = [];
 
     this.props.userPostsState.forEach((post, i) => {

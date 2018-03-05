@@ -39,6 +39,7 @@ class Followers extends React.Component {
   }
 
   clickUser(i) {
+    console.log('HERE IS THE CURRENT CLICKED ', this.props.currClickedUser)
     this.props.updateCurrClickedUser(this.props.followersState[i]);
   }
 

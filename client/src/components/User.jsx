@@ -10,23 +10,39 @@ import {connect} from "react-redux";
 import actions from "../Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCurrClickedUser: user => dispatch(actions.updateCurrClickedUser(user))
+  };
+};
+
 const mapStateToProps = state => {
   return {currUser: state.currUser,
-  currClickedUser: state.currClickedUser
+  currClickedUser: state.currClickedUser,
+  currUserInfo: state.currUserInfo
   };
 };
 
 class User extends React.Component {
   constructor(props) {
     super(props);
+
+    this.clickMyPage = this.clickMyPage.bind(this);
   }
-  // axios
+
+  clickMyPage() {
+    console.log('HERE IS THE CURR USER INFO: ', this.props.currUserInfo)
+    this.props.updateCurrClickedUser(this.props.currUserInfo);
+  }
+
   render() {
     // mapping over axios res
     return (<div>
       <nav>
         <Link to="/home">Home</Link>
+
       </nav>
+      <button onClick={() => this.clickMyPage()}>My Page</button>
       <h1>{this.props.currClickedUser.username.split('@')[0]}</h1>
       <Following/>
       <Followers/>
@@ -39,4 +55,4 @@ class User extends React.Component {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(User));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(User));
