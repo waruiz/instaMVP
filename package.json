@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run dev-react",
     "start": "node server/index.js",
-    "dev-react": "webpack"
+    "dev-react": "webpack -p"
   },
   "keywords": [],
   "author": "",
