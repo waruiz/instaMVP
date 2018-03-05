@@ -71,6 +71,13 @@ export default {
       type: 'UPDATE_CURR_USER_INFO',
       payload: userInfo
     }
+  ),
+
+  updateCurrClickedUser: user => (
+    {
+      type: 'UPDATE_CURR_CLICKED_USER',
+      payload: user
+    }
   )
 
 };

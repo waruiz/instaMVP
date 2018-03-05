@@ -11,7 +11,9 @@ import actions from "../Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
 
 const mapStateToProps = state => {
-  return {currUser: state.currUser};
+  return {currUser: state.currUser,
+  currClickedUser: state.currClickedUser
+  };
 };
 
 class User extends React.Component {
@@ -25,7 +27,7 @@ class User extends React.Component {
       <nav>
         <Link to="/home">Home</Link>
       </nav>
-      <h1>User Page</h1>
+      <h1>{this.props.currClickedUser.username.split('@')[0]}</h1>
       <Following/>
       <Followers/>
       <InfoPage/>

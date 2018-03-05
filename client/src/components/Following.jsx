@@ -8,6 +8,7 @@ const mapDispatchToProps = dispatch => {
   return {
     updateFollowing: following => dispatch(actions.updateFollowing(following)),
     updateCurrUser: user => dispatch(actions.updateCurrUser(user)),
+    updateCurrClickedUser: user => dispatch(actions.updateCurrClickedUser(user))
   };
 };
 
@@ -15,6 +16,7 @@ const mapStateToProps = state => {
   return{
   followingState: state.followingState,
   currUser: state.currUser,
+  currClickedUser: state.currClickedUser
   }
 };
 
@@ -22,6 +24,7 @@ class Followers extends React.Component {
   constructor(props) {
     super(props);
     this.getFollowing = this.getFollowing.bind(this);
+    this.clickUser = this.clickUser.bind(this);
   }
 
   getFollowing() {
@@ -30,6 +33,10 @@ class Followers extends React.Component {
     }).catch((error) => {
       console.log('ERROR IS: ', error);
     })
+  }
+
+  clickUser(i) {
+    this.props.updateCurrClickedUser(this.props.followersState[i]);
   }
 
   render() {
@@ -43,7 +50,7 @@ class Followers extends React.Component {
           <div className="modal-content">
             {
               this.props.followingState.map((item, i) => {
-                return (<div key={i}>{item.username}</div>)
+                return (<div key={i}>{item.username.split('@')[0]}</div>)
               })
             }
           </div>
