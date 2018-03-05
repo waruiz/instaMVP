@@ -10,12 +10,15 @@ import {connect} from "react-redux";
 import actions from "../Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
 import styles from '../styles/button.css';
+<<<<<<< HEAD
 
 const mapDispatchToProps = dispatch => {
   return {
     updateCurrClickedUser: user => dispatch(actions.updateCurrClickedUser(user))
   };
 };
+=======
+>>>>>>> 25008e92da124559fab4563a049623f74d6a4878
 
 const mapStateToProps = state => {
   return {currUser: state.currUser,
@@ -44,9 +47,12 @@ class User extends React.Component {
 
       </nav>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <button onClick={() => this.clickMyPage()}>My Page</button>
       <h1>{this.props.currClickedUser.username.split('@')[0]}</h1>
 =======
+=======
+>>>>>>> 25008e92da124559fab4563a049623f74d6a4878
       <button className="button search">Search</button>
       <h1>User Page</h1>
 >>>>>>> pushing now
