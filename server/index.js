@@ -25,10 +25,6 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use(router);
 
-app.get('/*', (req, res)=> {
-  res.sendFile( path.resolve(__dirname, '../client/dist', 'index.html') );
-})
-
 app.listen(port, () => console.log(`Server listening on port ${port}.`));
 
 module.exports = app;
