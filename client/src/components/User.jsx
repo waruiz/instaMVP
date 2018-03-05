@@ -9,6 +9,7 @@ import InfoPage from './User/Info.js';
 import {connect} from "react-redux";
 import actions from "../Redux/actions/index";
 import {browerHistory, Redirect} from "react-router";
+import styles from '../styles/button.css';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -36,7 +37,7 @@ class User extends React.Component {
   }
 
   render() {
-    // mapping over axios res
+
     return (<div>
       <nav>
         <Link to="/home">Home</Link>
