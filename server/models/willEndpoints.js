@@ -1,5 +1,16 @@
 const db = require("../../db/schema");
 
+const updateProfile = (req, res) => {
+  return db.Users.update({
+    name: req.body.data.name,
+    profile_pic: req.body.data.profile_pic
+  }, {
+    where: {
+      username: req.body.data.username
+    }
+  });
+}
+
 const putLike = (req, res) => {
 	return db.Users.findOne({
 		attributes: ['id'],
@@ -178,5 +189,6 @@ module.exports = {
 	addFollower,
 	requestFollower,
 	getUserSubs,
-	putLike
+  putLike,
+  updateProfile
 };

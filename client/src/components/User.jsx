@@ -5,10 +5,11 @@ import PostsContainerPage from './User/PostsContainer.js';
 import Following from './Following.jsx';
 import Followers from './Followers.jsx';
 import InfoPage from './User/Info.js';
+import Profile from './ProfilePage.jsx';
 
 import {connect} from "react-redux";
 import actions from "../Redux/actions/index";
-import {browerHistory, Redirect} from "react-router";
+import {browserHistory, Redirect} from "react-router";
 import styles from '../styles/button.css';
 
 const mapDispatchToProps = dispatch => {
@@ -41,7 +42,7 @@ class User extends React.Component {
     return (<div>
       <nav>
         <Link to="/home">Home</Link>
-
+        <Link to="/profile">Profile</Link>
       </nav>
       <button onClick={() => this.clickMyPage()}>My Page</button>
       <h1>{this.props.currClickedUser.username.split('@')[0]}</h1>
@@ -52,6 +53,7 @@ class User extends React.Component {
       <PostsContainerPage/>
 
       <Route path="/home" component={Home}/>
+      <Route path="/profile" component={Profile} />
     </div>);
   }
 }

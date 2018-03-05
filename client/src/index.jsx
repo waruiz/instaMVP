@@ -16,6 +16,7 @@ import NotFound from "./NotFound.jsx";
 import LandingPage from "./components/LandingPage.jsx";
 import Home from "./components/Home/Home.jsx";
 import Navbar from "./components/Home/Navbar.jsx";
+import Profile from './components/ProfilePage.jsx';
 
 import User from "./components/User.jsx";
 import * as firebase from "firebase";
@@ -122,6 +123,7 @@ class App extends React.Component {
       <Route exact="exact" path="/" component={LandingPage}/>
       <Route path="/home" component={Home}/>
       <Route path="/user" component={User}/>
+      <Route path="/profile" component={Profile} />
     </div>);
   }
 }

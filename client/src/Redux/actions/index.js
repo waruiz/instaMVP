@@ -78,6 +78,20 @@ export default {
       type: 'UPDATE_CURR_CLICKED_USER',
       payload: user
     }
+  ),
+
+  updateProfilePicState: img_url => (
+    {
+      type: 'UPATE_PROFILE_PIC_STATE',
+      payload: img_url
+    }
+  ),
+
+  updateNameState: name => (
+    {
+      type: 'UPDATE_NAME_STATE',
+      payload: name
+    }
   )
 
 };

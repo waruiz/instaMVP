@@ -7,6 +7,8 @@ const router = require("./router");
 const controller = require("./controller");
 const app = express();
 
+const port = process.env.PORT || 8080;
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,6 +29,6 @@ app.get('/*', (req, res)=> {
   res.sendFile( path.resolve(__dirname, '../client/dist', 'index.html') );
 })
 
-app.listen(8080, () => console.log("Server listening on port 8080."));
+app.listen(port, () => console.log(`Server listening on port ${port}.`));
 
 module.exports = app;

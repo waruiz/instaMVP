@@ -16,8 +16,10 @@ var getLikes = function(req) {
 };
 
 var getUserInfo = function(req) {
-	return db.Users.find({
-		where: req.params
+	return db.Users.findOne({
+		where: {
+			username: req.params.username
+		}
 	});
 };
 
@@ -109,6 +111,9 @@ var getSubsByFollowing = function(req){
 			username: req.params.user
 		}
 	}).then( result => {
+		if (result.length === 0) {
+			return 'Not following anyone.';
+		}
 		return db.Followers.findAll({
 			where: {
 				follower_id: result[0].dataValues.id

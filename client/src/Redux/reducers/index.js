@@ -85,6 +85,10 @@ const allReducers = combineReducers({
   },
   
   addLikeState: (state = null, action) => {
+    switch (action.payload) {
+      case undefined:
+        return state;
+    }
     switch (action.type) {
       case 'UPDATE_ADD_LIKE_STATE':
         return state = action.payload;
@@ -104,6 +108,26 @@ const allReducers = combineReducers({
     switch (action.type) {
       case 'UPDATE_CURR_CLICKED_USER':
       return state = action.payload;
+      default: return state;
+    }
+  },
+  
+  profilePicState: (state = null, action) => {
+    switch (action.type) {
+      case 'UPATE_PROFILE_PIC_STATE':
+        return state = action.payload;
+      default: return state;
+    }
+  },
+
+  nameState: (state = null, action) => {
+    switch (action.payload) {
+      case undefined:
+        return state;
+    }
+    switch (action.type) {
+      case 'UPDATE_NAME_STATE':
+        return state = action.payload;
       default: return state;
     }
   }
