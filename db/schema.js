@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 let connection;
 
 if (process.env.CLEARDB_DATABASE_URL) {
-	const remoteDB = process.env.DATABASE_URL.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+	const remoteDB = process.env.CLEARDB_DATABASE_URL.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
 	connection = new Sequelize(remoteDB[5], remoteDB[1], remoteDB[2], {
 		host: remoteDB[3],
 		port: remoteDB[4],
