@@ -2,18 +2,18 @@ const Sequelize = require("sequelize");
 
 let connection;
 
-if (process.env.CLEARDB_DATABASE_URL) {
-	let remoteDB = process.env.CLEARDB_DATABASE_URL.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
-	connection = new Sequelize(remoteDB[5], remoteDB[1], remoteDB[2], {
-		host: remoteDB[3],
-		port: remoteDB[4],
-		dialect: "mysql",
-		pool: {
-			max: 20,
-			min: 0
-		}
-	});
-} else {
+// if (process.env.CLEARDB_DATABASE_URL) {
+// 	let remoteDB = process.env.CLEARDB_DATABASE_URL.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+// 	connection = new Sequelize(remoteDB[5], remoteDB[1], remoteDB[2], {
+// 		host: remoteDB[3],
+// 		port: remoteDB[4],
+// 		dialect: "mysql",
+// 		pool: {
+// 			max: 20,
+// 			min: 0
+// 		}
+// 	});
+// } else {
 	connection = new Sequelize("insta", "root", "", {
 		host: "localhost",
 		dialect: "mysql",
@@ -22,7 +22,7 @@ if (process.env.CLEARDB_DATABASE_URL) {
 			min: 0
 		}
 	});
-}
+// }
 
 const Users = connection.define("users", {
 	id: {
@@ -163,8 +163,8 @@ const Followers = connection.define("followers", {
 	}
 });
 
-connection.authenticate();
-// connection.sync();
+// connection.authenticate();
+connection.sync();
 
 
 module.exports = {
