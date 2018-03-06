@@ -23,7 +23,7 @@ import * as firebase from "firebase";
 
 import {connect} from "react-redux";
 import actions from "./Redux/actions/index";
-import {browerHistory, Redirect} from "react-router";
+import {browserHistory, Redirect} from "react-router";
 import axios from 'axios'
 // import config from '../../config.js';
 
